@@ -1,160 +1,95 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <windows.h>
-#include <dos.h>
-#include <conio.h>
+void rowdivider (){
+            int onerow;
+            for(onerow=0;onerow<171;onerow++){
+            printf("_");}
+            printf("\n");
+}
+void coldivider (){
+            int onecol;
+            for(onecol=0;onecol<11;onecol++){
+            printf("|                ");}
+            printf("\n");
+}
+int boxnumber (int rowcounter,int idcounter){
+
+            int id=0;
+            if ((rowcounter==2)||(rowcounter==4)){
+                for(id=idcounter;id>idcounter-10;id--){
+                printf("|       %2d       ",id);}
+            }else{
+                for(id=idcounter-9;id<idcounter+1;id++){
+                printf("|       %2d       ",id);}
+                }
+            printf("|\n");
+            rowcounter++;
+            return rowcounter;
+            }
+void boxdirections (int rowcounter,int idcounter){
+
+            int id=0;
+            if ((rowcounter==2)||(rowcounter==4)){
+                for(id=idcounter;id>idcounter-10;id--){
+
+                switch (id){
+                    case 40:
+                        printf("|Reverse 10 steps");break;
+                    case 36:
+                        printf("|  Go to box 11  ");break;
+                    case 31:
+                        printf("| Pause 2 turns  ");break;
+                    case 18:
+                        printf("|  Go to box 40  ");break;
+                    default:
+                        printf("|                ");break;
+
+                    }
+                }
+            }else{
+                for(id=idcounter-9;id<idcounter+1;id++){
+
+                switch (id){
+                    case 50:
+                        printf("|      Win!      ");break;
+                    case 48:
+                        printf("|   Go to box 1  ");break;
+                    case 41:
+                        printf("|  Go to box 49  ");break;
+                    case 22:
+                        printf("|   Go to box 33 ");break;
+                    case 8:
+                        printf("| Reverse 3 steps");break;
+                    case 2:
+                        printf("|  Pause 1 turn  ");break;
+                    default:
+                        printf("|                ");break;
+
+                    }
+                }
+            }
+            printf("|\n");
+
+    }
+
+
 
 int main()
 {
-    int x,y,total=41,counter,counter2=0,counter3=0,moves=0,z;
-    char move[50],roll[2];
-    move[45]='x';
-    move[49]='x';
-    printf("Press Enter to roll the dice: ");
-    fgets(roll,sizeof(roll),stdin);
-    system("cls");
-    for(x=0;x<1;x++)
-    {
-        moves=(rand()%6)+1;
-
+    int row,idcounter=50,rowcounter=1;
+    for(row=0;row<5;row++){
+            rowdivider();
+            coldivider();
+            boxdirections(rowcounter,idcounter);
+            coldivider();
+            rowcounter = boxnumber(rowcounter,idcounter);
+            coldivider();
+            coldivider();
+            coldivider();
+            idcounter-=10;
     }
-    while (roll[0]=='\n'){
-    for(x=0;x<5;x++)
-    {
-        if (x==1){
-            total= 40;
-        }
-        if (x==2)
-        {
-            total = 21;
-        }
-        if(x==3){
-            total = 20;
-        }
-        if(x==4)
-        {
-            total = 1;
-        }
-        for(y=0;y<10;y++)
-        {
-            if ((x==0)||(x==2)){
-            if(move[total-1]=='x')
-            {
-                for(z=0;z<=moves;z++){
-                    for (counter=0;counter<counter3;counter++)
-            {
-                printf("\n");
-            }
+            rowdivider();
 
-                for (counter=0;counter<counter2;counter++){
-                printf("  ");
-            }
-                Sleep(100);
-                printf("X");
-                Sleep(300);
-                system("cls");
-                total++;
-                counter2++;
-                y++;
-                }
-            }
-            else{
-            for (counter=0;counter<counter3;counter++)
-            {
-                printf("\n");
-            }
-            for (counter=0;counter<counter2;counter++){
-                printf("  ");
-            }
-            Sleep(100);
-            printf("%d ",total);
-            Sleep(300);
-            system("cls");
-            total++;
-            counter2++;
-            }
-            }
-            if(x==4){
-                if(move[total-1]=='x')
-            {
-                for(z=0;z<=moves;z++){
-                    for (counter=0;counter<counter3;counter++)
-            {
-                printf("\n");
-            }
 
-                for (counter=0;counter<counter2;counter++){
-                printf("  ");
-            }
-                Sleep(100);
-                printf("X");
-                Sleep(300);
-                system("cls");
-                total++;
-                counter2++;
-                y++;
-                }
-            }
-
-            else{
-            for (counter=0;counter<counter3;counter++)
-            {
-                printf("\n");
-            }
-            for (counter=0;counter<counter2;counter++){
-                printf("  ");
-            }
-            Sleep(100);
-            printf("%d ",total);
-            Sleep(300);
-            system("cls");
-            total++;
-            counter2++;
-            }
-            }
-            if ((x==1)||(x==3)){
-                if(move[total-1]=='x')
-            {
-                for(z=0;z<=moves;z++){
-                    for (counter=0;counter<counter3;counter++)
-            {
-                printf("\n");
-            }
-
-                for (counter=0;counter<counter2;counter++){
-                printf("  ");
-            }
-                Sleep(100);
-                printf("X");
-                Sleep(300);
-                system("cls");
-                total--;
-                counter2++;
-                y++;
-                }
-            }
-
-            else{
-            for (counter=0;counter<counter3;counter++)
-            {
-                printf("\n");
-            }
-            for (counter=0;counter<counter2;counter++){
-                printf("  ");
-            }
-            Sleep(100);
-            printf("%d ",total);
-            Sleep(300);
-            system("cls");
-            total--;
-            counter2++;
-            }
-        }
-    }
-    counter3++;
-    counter2=0;
-    }
-    printf("Press Enter to roll the dice: ");
-    fgets(roll,sizeof(roll),stdin);
-}
+    return 0;
 }
