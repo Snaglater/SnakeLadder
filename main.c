@@ -3,8 +3,8 @@
 #include <windows.h>
 #include <time.h>
 
+//Function to show message after user choose to quit (decoration purpose)
 void end(){
-
     printf("\n\n");printline();
     printf("\n");printline2();
     printf("\n  |  |                                                                                                                                 |  | ");
@@ -35,8 +35,9 @@ void end(){
     printf("\n  |  |                                                                                                                                 |  | ");
     printf("\n");printline2();
     printf("\n");printline();
-
 }
+
+//function to print line (decoration purpose)
 void printline2(){
     int dash2;
     for(dash2=0;dash2<139;dash2++){
@@ -49,7 +50,7 @@ void printline2(){
 
 
 }
-
+//Another function to print line (decoration purpose)
 void printline(){
     int dash;
     for(dash=0;dash<138;dash++){
@@ -60,7 +61,9 @@ void printline(){
 
 }
 
+//Function to print the whole board
 void printboard (char x[],char y[],char o[]){
+    //The number in each box is arranged accordingly to print at correct sequence
     int coloumn,row,boxnumber[]={41,42,43,44,45,46,47,48,49,50,40,39,38,37,36,35,34,33,32,31,21,22,23,24,25,26,27,28,29,30,20,19,18,17,16,15,14,13,12,11,1,2,3,4,5,6,7,8,9,10}
     ,counter_box_number=0,counter_X=0,counter_Y=0,counter_O=0;
 
@@ -72,6 +75,7 @@ void printboard (char x[],char y[],char o[]){
     printf("|            |");
     }printf("\n");
     for(coloumn=0;coloumn<10;coloumn++){
+    //To print instruction in boxes with special effects
     if (row==0){
         if (counter_box_number==0){printf("|    GT49    |");}
         else if (counter_box_number==7){printf("|    GT 2    |");}
@@ -113,8 +117,10 @@ void printboard (char x[],char y[],char o[]){
     printf(" ------------ ");
     }
     printf("\n");
+    //To show the meaning of GT, R and P
     }printf("GT : Go to tile\nR : Reverse steps\nP : Pause round\n\n\n");}
 
+//Function to print the first page (decoration purpose), to get to the game mode user want to
 int firstpage (){
     int number;
     printf("\n\n");printline();
@@ -149,19 +155,21 @@ int firstpage (){
     printf("\n");printline();
     printf("\n\tPlease Enter Your Choice Here : ");
     scanf(" %d",&number);
-
     return number;}
 
+//Function to determine the location of 'X' chess
 void x_move(int *current_x, int *previous_x,char location_of_chess_Y[],int *counter,char location_of_chess_X[],char location_of_chess_O[],int *win,int *pause_x){
     int roll,moved=0,move_left=0;
     time_t t;
     srand((unsigned)time(&t));
     roll=rand()%6;
     roll++;
+    //To pause the chess when it stops at special tiles
     if (((*previous_x)==2)&&(((*current_x)==2))&&(*pause_x>=1)){printf("X is trapped, "),roll=0,(*pause_x)-=2;}
     if (((*previous_x)==31)&&(((*current_x)==31))&&(*pause_x>=1)){printf("X is trapped, "),roll=0,(*pause_x)--;}
     printf("X get %d point",roll);
     Sleep(1000);
+    //To record the distance the chess has went through
     (*current_x)+=roll;
     system("cls");
         for (;((*previous_x)<(*current_x))||(move_left!=0);(*previous_x)++){
@@ -170,6 +178,7 @@ void x_move(int *current_x, int *previous_x,char location_of_chess_Y[],int *coun
         Sleep(400);
         system("cls");
         location_of_chess_X[(*counter)]=' ';
+        //To move the chess to new location when it stops at special tiles
         if (((*previous_x)==17)&&(((*current_x)==18))){printf("X is moved to box 40, \n"),Sleep(1000),(*current_x)=40,(*previous_x)=39,roll=0,location_of_chess_X[(*counter)]=' ',(*counter)=11;}
         if (((*previous_x)==7)&&(((*current_x)==8))){printf("X is forced to reverse 3 steps, \n"),Sleep(1000),(*current_x)-=3,(*previous_x)-=3,roll=0,location_of_chess_X[(*counter)]=' ',(*counter)-=3;}
         if (((*previous_x)==21)&&(((*current_x)==22))){printf("X is moved to box 33, \n"),Sleep(1000),(*current_x)=33,(*previous_x)=32,roll=0,location_of_chess_X[(*counter)]=' ',(*counter)=18;}
@@ -190,6 +199,7 @@ void x_move(int *current_x, int *previous_x,char location_of_chess_Y[],int *coun
         printboard(location_of_chess_X,location_of_chess_Y,location_of_chess_O);
 }
 
+//Function to determine the location of computer chess
 void computermove (int *current_y, int *previous_y,char location_of_chess_Y[],int *counter1,char location_of_chess_X[],char location_of_chess_O[],int *win,int *pause_y){
     int roll,moved=0,move_left=0;
     time_t t;
@@ -227,7 +237,7 @@ void computermove (int *current_y, int *previous_y,char location_of_chess_Y[],in
         location_of_chess_Y[(*counter1)]='Y';
         printboard(location_of_chess_X,location_of_chess_Y,location_of_chess_O);
 }
-
+//Function to determine the location of 'Y' chess
 void y_move (int *current_y, int *previous_y,char location_of_chess_Y[],int *counter1,char location_of_chess_X[],char location_of_chess_O[],int *win,int *pause_y){
     int roll,moved=0,move_left=0;
     time_t t;
@@ -265,7 +275,7 @@ void y_move (int *current_y, int *previous_y,char location_of_chess_Y[],int *cou
         location_of_chess_Y[(*counter1)]='Y';
         printboard(location_of_chess_X,location_of_chess_Y,location_of_chess_O);
 }
-
+//Function to determine the location of 'O' chess
 void o_move (int *current_o, int *previous_o,char location_of_chess_Y[],int *counter2,char location_of_chess_X[],char location_of_chess_O[],int *win,int *pause_o){
     int roll,moved=0,move_left=0;
     time_t t;
@@ -310,7 +320,7 @@ int main()
     int userchoice=1,sequence,roll,current_x=1,previous_x=1,current_y=1,previous_y=1,current_o=1,previous_o=1,counter=40,counter1=40,counter2=40,moved=0,win=0
         ,pause_x=2,pause_y=2,pause_o=2,no_player=0;
     time_t t;
-
+    //Continue the game unless user input is 3 which is to leave the game
     while (userchoice==1||userchoice==2){
     userchoice=firstpage();
     if (userchoice==1){
