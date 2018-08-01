@@ -14,4 +14,4 @@ NEW UPLOAD FILE FOR SNAKE LADDER TEST. PLEASE HELP CHECKING FOR BUGS!!!! -PANG :
 
 1/8/18 NEW UPLOAD FILE SNAKE LADDER AI IS IMPLEMENTED. PLEASE HELP CHECK AND GIVE COMMENTS THAN YOU!! - PANG :)
 
-1/8/18 I accidentally replace original main.c file but the old one still can be found in the history. - CHAN
+1/8/18 I accidentally replace original main.c file but the old one still can be found in the history. The one I updated is a totally different snake ladder but can work well - CHAN
