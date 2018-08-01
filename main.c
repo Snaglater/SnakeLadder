@@ -154,6 +154,8 @@ int firstpage (){
 
 void x_move(int *current_x, int *previous_x,char location_of_chess_Y[],int *counter,char location_of_chess_X[],char location_of_chess_O[],int *win,int *pause_x){
     int roll,moved=0,move_left=0;
+    time_t t;
+    srand((unsigned)time(&t));
     roll=rand()%6;
     roll++;
     if (((*previous_x)==2)&&(((*current_x)==2))&&(*pause_x>=1)){printf("X is trapped, "),roll=0,(*pause_x)-=2;}
@@ -190,6 +192,8 @@ void x_move(int *current_x, int *previous_x,char location_of_chess_Y[],int *coun
 
 void computermove (int *current_y, int *previous_y,char location_of_chess_Y[],int *counter1,char location_of_chess_X[],char location_of_chess_O[],int *win,int *pause_y){
     int roll,moved=0,move_left=0;
+    time_t t;
+    srand((unsigned)time(&t));
     roll=rand()%6;
     roll++;
     if (((*previous_y)==2)&&(((*current_y)==2))&&(*pause_y>=1)){printf("Y is trapped, "),roll=0,(*pause_y)-=2;}
@@ -226,6 +230,8 @@ void computermove (int *current_y, int *previous_y,char location_of_chess_Y[],in
 
 void y_move (int *current_y, int *previous_y,char location_of_chess_Y[],int *counter1,char location_of_chess_X[],char location_of_chess_O[],int *win,int *pause_y){
     int roll,moved=0,move_left=0;
+    time_t t;
+    srand((unsigned)time(&t));
     roll=rand()%6;
     roll++;
     if (((*previous_y)==2)&&(((*current_y)==2))&&(*pause_y>=1)){printf("Y is trapped, "),roll=0,(*pause_y)-=2;}
@@ -262,6 +268,8 @@ void y_move (int *current_y, int *previous_y,char location_of_chess_Y[],int *cou
 
 void o_move (int *current_o, int *previous_o,char location_of_chess_Y[],int *counter2,char location_of_chess_X[],char location_of_chess_O[],int *win,int *pause_o){
     int roll,moved=0,move_left=0;
+    time_t t;
+    srand((unsigned)time(&t));
     roll=rand()%6;
     roll++;
     if (((*previous_o)==2)&&(((*current_o)==2))&&(*pause_o>=1)){printf("O is trapped, "),roll=0,(*pause_o)-=2;}
