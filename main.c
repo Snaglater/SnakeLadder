@@ -3,911 +3,391 @@
 #include <windows.h>
 #include <time.h>
 
-void rowdivider (){
-            int onerow;
-            for(onerow=0;onerow<171;onerow++){
-            printf("_");}
-            printf("\n");
+void end(){
+
+    printf("\n\n");printline();
+    printf("\n");printline2();
+    printf("\n  |  |                                                                                                                                 |  | ");
+    printf("\n  |  |            _____________                                  __     __                                                             |  | ");
+    printf("\n  |  |           |_____   _____|          ______     __      __ |  |   '  '                                                            |  | ");
+    printf("\n  |  |                 |  |  __     __   '   _   '  |   '   |  ||  |  '  '                                                             |  | ");
+    printf("\n  |  |                 |  | |  |   |  | |   |_|   | |     ' |  ||  | '  '  _____                                                       |  | ");
+    printf("\n  |  |                 |  | |  |___|  | |   ___   | |  |'   '  ||      '  |  __.|-|                                                    |  | ");
+    printf("\n  |  |                 |  | |   ___   | |  |   |  | |__|  '____||  |'  '  |  |__                                                       |  | ");
+    printf("\n  |  |                 |__| |  |   |  | |__|   |__|             |  | '  ' |___  |                                                      |  | ");
+    printf("\n  |  |                      |__|   |__|                         |__|  '__'  _|  |                                                      |  | ");
+    printf("\n  |  |                       ______                                        |____|                                                      |  | ");
+    printf("\n  |  |                      |  ____|          ___                                                                                      |  | ");
+    printf("\n  |  |                      |  |___   _____  |  _ '                                                                                    |  | ");
+    printf("\n  |  |                      |   ___| |  _  | | |_| |                                                                                   |  | ");
+    printf("\n  |  |                      |  |     | |_| | |  _ '                                                                                    |  | ");
+    printf("\n  |  |                      |__|     |_____| | | ' '                                                                                   |  | ");
+    printf("\n  |  |                                       |_|  '_'                                                                                  |  | ");
+    printf("\n  |  |                                      _____         ___                               _______                                    |  | ");
+    printf("\n  |  |                                     |  _  '  _    ' __ '                            | ______|                                   |  | ");
+    printf("\n  |  |                                     | |_| | | |  | '__' |  __     __      __    __  | |                                         |  | ");
+    printf("\n  |  |                                     |  ___' | |  |      |  ' '   ' ' .'. |  '   | | | |   ____                                  |  | ");
+    printf("\n  |  |                                     |  |    | |  | ____ |   ' ' ' '   _  | |' ' | | | |  |__  |                                 |  | ");
+    printf("\n  |  |                                     |  |    | |__|_|__|_|___  '  '   | | | | ' '| | | |_____| |                                 |  | ");
+    printf("\n  |  |                                     |__|    |_______________|  | |   | | |_|   '__| |_________|                                 |  | ");
+    printf("\n  |  |                                                                |_|   |_|                                                        |  | ");
+    printf("\n  |  |                                                                                                                                 |  | ");
+    printf("\n  |  |                                                                                                                                 |  | ");
+    printf("\n");printline2();
+    printf("\n");printline();
+
 }
-void coldivider (){
-            int onecol;
-            for(onecol=0;onecol<11;onecol++){
-            printf("|                ");}
-            printf("\n");
-}
-int coldivider5 (int x,int n,int current[],int previous[],int z[],int player,int roll,int moves,int times[]){
-            int onecol,samex=0,samey=0,samez=0,loop=0,reset=0;
-            for(onecol=0;onecol<11;onecol++){samex=0,samey=0,samez=0;
-            //row 5
-                    if ((x==4)&&(z[n]==onecol)&&((current[n]<=10)||(previous[n]<=10))){
-                            if(moves==roll){
-                            if((current[0]==current[1])&&(current[0]==current[2])&&(current[1]==current[2])&&(current[0]<=10)&&(current[1]<=10)&&(current[2]<=10)&&(samex==0)&&(samey==0)&&(samez==0))
-                               {
-                                printf("|   X    Y    O  ");
-                                samex=1,samey=1,samez=1,loop++;
-                               }
-                               else if((current[0]==current[1])&&(n!=2)&&(current[0]<=10)&&(current[1]<=10))
-                               {
-                                   printf("|   X    Y       ");
-                                   samex=1,samey=1,loop++;
-                               }
-                               else if(current[0]==current[2]&&(n!=1)&&(current[0]<=10)&&(current[2]<=10))
-                               {
-                                   printf("|   X         O  ");
-                                   samex=1,samez=1,loop++;
-                               }
-                               else if(current[1]==current[2]&&(n!=0)&&(current[1]<=10)&&(current[2]<=10))
-                               {
-                                   printf("|        Y    O  ");
-                                   samey=1,samez=1,loop++;
-                               }
-                        else if((n==0)&&(current[0]<=10))
-                            {
-                            printf("|   X            ");
-                            samex=1,loop++;
-                            }
-                        else if ((n==1)&&(current[1]<=10))
-                        {
-                            printf("|        Y       ");
-                            samey=1,loop++;
-                        }
-                        else if ((n==2)&&(current[2]<=10))
-                        {
-                            printf("|             O  ");
-                            samez=1,loop++;
-                        }
-                            }
-                    else if((moves>0)&&(moves!=roll))
-                    {
-                    if ((z[0]==z[1])&&(z[1]==z[2])&&(z[0]==z[2])&&(current[0]<=10)&&(current[1]<=10)&&(current[2]<=10)&&(samex==0)&&(samey==0)&&(samez==0))
-                    {
-                        printf("|   X    Y    O  ");
-                                samex=1,samey=1,samez=1,loop++;
-                    }
-                    else if ((z[0]==z[1])&&(n!=2)&&(current[0]<=10)&&(current[1]<=10))
-                    {
-                        printf("|   X    Y       ");
-                        samex=1,samey=1,loop++;
-                    }
-                    else if((z[1]==z[2])&&(n!=0)&&(current[1]<=10)&&(current[2]<=10))
-                    {
-                        printf("|        Y    O  ");
-                        samey=1,samez=1,loop++;
-                    }
-                    else if((z[0]==z[2])&&(n!=1)&&(current[0]<=10)&&(current[2]<=10))
-                    {
-                        printf("|   X         O  ");
-                        samex=1,samez=1,loop++;
-                    }
-                       else if((n==0)&&(current[0]<=10))
-                            {
-                            printf("|   X            "),samex=1,loop++;
-                            }
-                        else if ((n==1)&&(current[1]<=10))
-                        {
-                            printf("|        Y       "),samey=1,loop++;
-                        }
-                        else if ((n==2)&&(current[2]<=10))
-                        {
-                            printf("|             O  "),samez=1,loop++;
-                        }
-                    }
-
-                    }   // row 5
-                            if((previous[0]==previous[1])&&(previous[0]==previous[2])&&(previous[1]==previous[2])&&(z[0]==onecol)&&(z[1]==onecol)&&(z[2]==onecol)&&(x==4)&&(previous[0]<=10)&&(previous[1]<=10)&&(previous[2]<=10)&&(samex==0)&&(samey==0)&&(samez==0))
-                            {
-                                printf("|   X    Y    O  ");
-                                samex=1,samey=1,samez=1,loop++;
-
-                            }
-                             if ((previous[0]==previous[1])&&((z[0]==onecol)&&(z[1]==onecol))&&(x==4)&&(samex==0)&&(samey==0)&&(previous[0]<=10)&&(previous[1]<=10))
-                            {
-                                printf("|   X    Y       ");
-                                samex=1,samey=1,loop++;
-
-                            }
-                            if ((previous[0]==previous[2])&&((z[0]==onecol)&&(z[2]==onecol))&&(x==4)&&(samex==0)&&(samez==0)&&(previous[0]<=10)&&(previous[2]<=10))
-                            {
-                                printf("|   X         O  ");
-                                samex=1,samez=1,loop++;
-
-                            }
-                             if ((previous[1]==previous[2])&&((z[1]==onecol)&&(z[2]==onecol))&&(x==4)&&(samey==0)&&(samez==0)&&(previous[1]<=10)&&(previous[2]<=10))
-                            {
-                                printf("|        Y    O  ");
-                                samey=1,samez=1,loop++;
-
-                            }
-                        else if((z[0]==onecol)&&(samex==0)&&(x==4)&&previous[0]<=10)
-                            {
-                            printf("|   X            ");
-                            loop++;
-                            }
-                        else if ((z[1]==onecol)&&(samey==0)&&(x==4)&&previous[1]<=10)
-                        {
-                            printf("|        Y       ");
-                            loop++;
-                        }
-                        else if ((z[2]==onecol)&&(samez==0)&&(x==4)&&previous[2]<=10)
-                        {
-                            printf("|             O  ");
-                            loop++;
-                        }
-                        //row 4
-                        else if((x==3)&&(((current[n]>10)&&(current[n]<=20))||(previous[n]<=20))&&(z[n]==onecol)&&(previous[n]>10)){
-                        if(moves==roll){
-                            if((current[0]==current[1])&&(current[0]==current[2])&&(current[1]==current[2])&&(current[0]<=20)&&(current[1]<=20)&&(current[2]<=20)&&(current[0]>10)&&(current[1]>10)&&(current[2]>10))
-                               {
-                                printf("|   X    Y    O  ");
-                                samex=1,samey=1,samez=1,loop++;
-                               }
-                               else if((current[0]==current[1])&&(n!=2)&&(current[0]<=20)&&(current[1]<=20)&&(current[2]<=20)&&(current[0]>10)&&(current[1]>10))
-                               {
-                                   printf("|   X    Y       ");
-                                   samex=1,samey=1,loop++;
-                               }
-                               else if(current[0]==current[2]&&n!=1&&(current[0]<=20)&&(current[1]<=20)&&(current[2]<=20)&&(current[0]>10)&&(current[2]>10))
-                               {
-                                   printf("|   X         O  ");
-                                   samex=1,samez=1,loop++;
-                               }
-                               else if(current[1]==current[2]&&(n!=0)&&(current[0]<=20)&&(current[1]<=20)&&(current[2]<=20)&&(current[1]>10)&&(current[2]>10))
-                               {
-                                   printf("|        Y    O  ");
-                                   samey=1,samez=1,loop++;
-                               }
-                        else if((n==0)&&(current[0]<=20)&&(current[0]>10))
-                            {
-                            printf("|   X            ");
-                            samex=1,loop++;
-                            }
-                        else if ((n==1)&&(current[1]<=20)&&(current[1]>10))
-                        {
-                            printf("|        Y       ");
-                            samey=1,loop++;
-                        }
-                        else if ((n==2)&&(current[2]<=20)&&(current[1]>10))
-                        {
-                            printf("|             O  ");
-                            samez=1,loop++;
-                        }
-                            }
-                    else if((moves>0)&&(moves!=roll))
-                    {
-                    if ((z[0]==z[1])&&(z[1]==z[2])&&(z[0]==z[2])&&(current[0]<=20)&&(current[1]<=20)&&(current[2]<=20)&&(current[0]>10)&&(current[1]>10)&&(current[2]>10))
-                    {
-                        printf("|   X    Y    O  ");
-                                samex=1,samey=1,samez=1,loop++;
-                    }
-                    else if ((z[0]==z[1])&&(n!=2)&&(current[0]<=20)&&(current[1]<=20)&&(current[0]>10)&&(current[1]>10))
-                    {
-                        printf("|   X    Y       ");
-                        samex=1,samey=1,loop++;
-                    }
-                    else if((z[1]==z[2])&&(n!=0)&&(current[1]<=20)&&(current[2]<=20)&&(current[1]>10)&&(current[2]>10))
-                    {
-                        printf("|        Y    O  ");
-                        samey=1,samez=1,loop++;
-                    }
-                    else if((z[0]==z[2])&&(n!=1)&&(current[0]<=20)&&(current[2]<=20)&&(current[0]>10)&&(current[2]>10))
-                    {
-                        printf("|   X         O  ");
-                        samex=1,samez=1,loop++;
-                    }
-                       else if((n==0)&&(current[0]<=20)&&(current[0]>10))
-                            {
-                            printf("|   X            "),samex=1,loop++;
-                            }
-                        else if ((n==1)&&(current[1]<=20)&&(current[0]>10))
-                        {
-                            printf("|        Y       "),samey=1,loop++;
-                        }
-                        else if ((n==2)&&(current[2]<=20)&&(current[0]>10))
-                        {
-                            printf("|             O  "),samez=1,loop++;
-                        }
-                    }
-                        }
-                        // row 4
-                        if((previous[0]==previous[1])&&(previous[0]==previous[2])&&(previous[1]==previous[2])&&(z[0]==onecol)&&(z[1]==onecol)&&(z[2]==onecol)&&(x==3)&&((previous[0]<=20)&&(previous[0]>10))&&((previous[1]<=20)&&(previous[1]>10))&&((previous[2]<=20)&&(previous[2]>10))&&(samex==0)&&(samey==0)&&(samez==0))
-                            {
-                                printf("|   X    Y    O  ");
-                                samex=1,samey=1,samez=1,loop++;
-
-                            }
-                             if ((previous[0]==previous[1])&&((z[0]==onecol)&&(z[1]==onecol))&&(x==3)&&(samex==0)&&(samey==0)&&((previous[0]<=20)&&(previous[0]>10))&&((previous[1]<=20)&&(previous[1]>10)))
-                            {
-                                printf("|   X    Y       ");
-                                samex=1,samey=1,loop++;
-
-                            }
-                            if ((previous[0]==previous[2])&&((z[0]==onecol)&&(z[2]==onecol))&&(x==3)&&(samex==0)&&(samez==0)&&((previous[0]<=20)&&(previous[0]>10))&&((previous[2]<=20)&&(previous[2]>10)))
-                            {
-                                printf("|   X         O  ");
-                                samex=1,samez=1,loop++;
-
-                            }
-                             if ((previous[1]==previous[2])&&((z[1]==onecol)&&(z[2]==onecol))&&(x==3)&&(samey==0)&&(samez==0)&&((previous[1]<=20)&&(previous[1]>10))&&((previous[2]<=20)&&(previous[2]>10)))
-                            {
-                                printf("|        Y    O  ");
-                                samey=1,samez=1,loop++;
-
-                            }
-                        else if((z[0]==onecol)&&(samex==0)&&(x==3)&&((previous[0]<=20)&&(previous[0]>10)))
-                            {
-                            printf("|   X            ");
-                            loop++;
-                            }
-                        else if ((z[1]==onecol)&&(samey==0)&&(x==3)&&((previous[1]<=20)&&(previous[1]>10)))
-                        {
-                            printf("|        Y       ");
-                            loop++;
-                        }
-                        else if ((z[2]==onecol)&&(samez==0)&&(x==3)&&((previous[2]<=20)&&(previous[2]>10)))
-                        {
-                            printf("|             O  ");
-                            loop++;
-                        }
-                        //row 3
-                        else if((x==2)&&(((current[n]>20)&&(current[n]<=30))||(previous[n]<=30))&&(z[n]==onecol)&&(previous[n]>20))
-                        {
-                            if(moves==roll){
-                            if((current[0]==current[1])&&(current[0]==current[2])&&(current[1]==current[2])&&(current[0]<=30)&&(current[1]<=30)&&(current[2]<=30)&&(samex==0)&&(samey==0)&&(samez==0)&&(current[0]>20)&&(current[1]>20)&&(current[2]>20))
-                               {
-                                printf("|   X    Y    O  ");
-                                samex=1,samey=1,samez=1,loop++;
-                               }
-                               else if((current[0]==current[1])&&(n!=2)&&(current[0]<=30)&&(current[1]<=30)&&(current[0]>20)&&(current[1]>20))
-                               {
-                                   printf("|   X    Y       ");
-                                   samex=1,samey=1,loop++;
-                               }
-                               else if(current[0]==current[2]&&(n!=1)&&(current[0]<=30)&&(current[2]<=30)&&(current[0]>20)&&(current[2]>20))
-                               {
-                                   printf("|   X         O  ");
-                                   samex=1,samez=1,loop++;
-                               }
-                               else if(current[1]==current[2]&&(n!=0)&&(current[2]<=30)&&(current[1]<=30)&&(current[2]>20)&&(current[1]>20))
-                               {
-                                   printf("|        Y    O  ");
-                                   samey=1,samez=1,loop++;
-                               }
-                        else if((n==0)&&(current[0]<=30)&&(current[0]>20))
-                            {
-                            printf("|   X            ");
-                            samex=1,loop++;
-                            }
-                        else if ((n==1)&&(current[1]<=30)&&(current[1]>20))
-                        {
-                            printf("|        Y       ");
-                            samey=1,loop++;
-                        }
-                        else if ((n==2)&&(current[2]<=30)&&(current[2]>20))
-                        {
-                            printf("|             O  ");
-                            samez=1,loop++;
-                        }
-                            }
-                    else if((moves>0)&&(moves!=roll))
-                    {
-                    if ((z[0]==z[1])&&(z[1]==z[2])&&(z[0]==z[2])&&(current[0]<=30)&&(current[1]<=30)&&(current[2]<=30)&&(current[0]>20)&&(current[1]>20)&&(current[2]>20))
-                    {
-                        printf("|   X    Y    O  ");
-                                samex=1,samey=1,samez=1,loop++;
-                    }
-                    else if ((z[0]==z[1])&&(n!=2)&&(current[0]<=30)&&(current[1]<=30)&&(current[0]>20)&&(current[1]>20))
-                    {
-                        printf("|   X    Y       ");
-                        samex=1,samey=1,loop++;
-                    }
-                    else if((z[1]==z[2])&&(n!=0)&&(current[1]<=30)&&(current[2]<=30)&&(current[1]>20)&&(current[2]>20))
-                    {
-                        printf("|        Y    O  ");
-                        samey=1,samez=1,loop++;
-                    }
-                    else if((z[0]==z[2])&&(n!=1)&&(current[0]<=30)&&(current[2]<=30)&&(current[0]>20)&&(current[2]>20))
-                    {
-                        printf("|   X         O  ");
-                        samex=1,samez=1,loop++;
-                    }
-                       else if((n==0)&&(current[0]<=30)&&(current[0]>20))
-                            {
-                            printf("|   X            "),samex=1,loop++;
-                            }
-                        else if ((n==1)&&(current[1]<=30)&&(current[1]>20))
-                        {
-                            printf("|        Y       "),samey=1,loop++;
-                        }
-                        else if ((n==2)&&(current[2]<=30)&&(current[2]>20))
-                        {
-                            printf("|             O  "),samez=1,loop++;
-                        }
-                    }
-                        }
-                        //row 3
-                       if((previous[0]==previous[1])&&(previous[0]==previous[2])&&(previous[1]==previous[2])&&(z[0]==onecol)&&(z[1]==onecol)&&(z[2]==onecol)&&(x==2)&&((previous[0]<=30)&&(previous[0]>20))&&((previous[1]<=30)&&(previous[1]>20))&&((previous[2]<=30)&&(previous[2]>20))&&(samex==0)&&(samey==0)&&(samez==0))
-                            {
-                                printf("|   X    Y    O  ");
-                                samex=1,samey=1,samez=1,loop++;
-
-                            }
-                             if ((previous[0]==previous[1])&&((z[0]==onecol)&&(z[1]==onecol))&&(x==2)&&(samex==0)&&(samey==0)&&((previous[0]<=30)&&(previous[0]>20))&&((previous[1]<=30)&&(previous[1]>20)))
-                            {
-                                printf("|   X    Y       ");
-                                samex=1,samey=1,loop++;
-
-                            }
-                            if ((previous[0]==previous[2])&&((z[0]==onecol)&&(z[2]==onecol))&&(x==2)&&(samex==0)&&(samez==0)&&((previous[0]<=30)&&(previous[0]>20))&&((previous[2]<=30)&&(previous[2]>20)))
-                            {
-                                printf("|   X         O  ");
-                                samex=1,samez=1,loop++;
-
-                            }
-                             if ((previous[1]==previous[2])&&((z[1]==onecol)&&(z[2]==onecol))&&(x==2)&&(samey==0)&&(samez==0)&&((previous[1]<=30)&&(previous[1]>20))&&((previous[2]<=30)&&(previous[2]>20)))
-                            {
-                                printf("|        Y    O  ");
-                                samey=1,samez=1,loop++;
-
-                            }
-                        else if((z[0]==onecol)&&(samex==0)&&(x==2)&&((previous[0]<=30)&&(previous[0]>20)))
-                            {
-                            printf("|   X            ");
-                            loop++;
-                            }
-                        else if ((z[1]==onecol)&&(samey==0)&&(x==2)&&((previous[1]<=30)&&(previous[1]>20)))
-                        {
-                            printf("|        Y       ");
-                            loop++;
-                        }
-                        else if ((z[2]==onecol)&&(samez==0)&&(x==2)&&((previous[2]<=30)&&(previous[2]>20)))
-                        {
-                            printf("|             O  ");
-                            loop++;
-                        }
-                        //row 2
-                        else if ((x==1)&&(((current[n]>30)&&(current[n]<=40))||(previous[n]<=40))&&(z[n]==onecol)&&(previous[n]>30))
-                        {
-                            if(moves==roll){
-                            if((current[0]==current[1])&&(current[0]==current[2])&&(current[1]==current[2])&&(current[0]<=40)&&(current[1]<=40)&&(current[2]<=40)&&(samex==0)&&(samey==0)&&(samez==0)&&(current[0]>30)&&(current[1]>30)&&(current[2]>30))
-                               {
-                                printf("|   X    Y    O  ");
-                                samex=1,samey=1,samez=1,loop++;
-                               }
-                               else if((current[0]==current[1])&&(n!=2)&&(current[0]<=40)&&(current[1]<=40)&&(current[0]>30)&&(current[1]>30))
-                               {
-                                   printf("|   X    Y       ");
-                                   samex=1,samey=1,loop++;
-                               }
-                               else if(current[0]==current[2]&&(n!=1)&&(current[0]<=40)&&(current[2]<=40)&&(current[0]>30)&&(current[2]>30))
-                               {
-                                   printf("|   X         O  ");
-                                   samex=1,samez=1,loop++;
-                               }
-                               else if(current[1]==current[2]&&(n!=0)&&(current[2]<=40)&&(current[1]<=40)&&(current[2]>30)&&(current[1]>30))
-                               {
-                                   printf("|        Y    O  ");
-                                   samey=1,samez=1,loop++;
-                               }
-                        else if((n==0)&&(current[0]<=40)&&(current[0]>30))
-                            {
-                            printf("|   X            ");
-                            samex=1,loop++;
-                            }
-                        else if ((n==1)&&(current[1]<=40)&&(current[1]>30))
-                        {
-                            printf("|        Y       ");
-                            samey=1,loop++;
-                        }
-                        else if ((n==2)&&(current[2]<=40)&&(current[2]>30))
-                        {
-                            printf("|             O  ");
-                            samez=1,loop++;
-                        }
-                            }
-                    else if((moves>0)&&(moves!=roll))
-                    {
-                    if ((z[0]==z[1])&&(z[1]==z[2])&&(z[0]==z[2])&&(current[0]<=40)&&(current[1]<=40)&&(current[2]<=40)&&(current[0]>30)&&(current[1]>30)&&(current[2]>30))
-                    {
-                        printf("|   X    Y    O  ");
-                                samex=1,samey=1,samez=1,loop++;
-                    }
-                    else if ((z[0]==z[1])&&(n!=2)&&(current[0]<=40)&&(current[1]<=40)&&(current[0]>30)&&(current[1]>30))
-                    {
-                        printf("|   X    Y       ");
-                        samex=1,samey=1,loop++;
-                    }
-                    else if((z[1]==z[2])&&(n!=0)&&(current[1]<=40)&&(current[2]<=40)&&(current[1]>30)&&(current[2]>30))
-                    {
-                        printf("|        Y    O  ");
-                        samey=1,samez=1,loop++;
-                    }
-                    else if((z[0]==z[2])&&(n!=1)&&(current[0]<=40)&&(current[2]<=40)&&(current[0]>30)&&(current[2]>30))
-                    {
-                        printf("|   X         O  ");
-                        samex=1,samez=1,loop++;
-                    }
-                       else if((n==0)&&(current[0]<=40)&&(current[0]>30))
-                            {
-                            printf("|   X            "),samex=1,loop++;
-                            }
-                        else if ((n==1)&&(current[1]<=40)&&(current[1]>30))
-                        {
-                            printf("|        Y       "),samey=1,loop++;
-                        }
-                        else if ((n==2)&&(current[2]<=40)&&(current[2]>30))
-                        {
-                            printf("|             O  "),samez=1,loop++;
-                        }
-                    }
-                        }
-                        if((previous[0]==previous[1])&&(previous[0]==previous[2])&&(previous[1]==previous[2])&&(z[0]==onecol)&&(z[1]==onecol)&&(z[2]==onecol)&&(x==1)&&((previous[0]<=40)&&(previous[0]>30))&&((previous[1]<=40)&&(previous[1]>30))&&((previous[2]<=40)&&(previous[2]>30))&&(samex==0)&&(samey==0)&&(samez==0))
-                            {
-                                printf("|   X    Y    O  ");
-                                samex=1,samey=1,samez=1,loop++;
-
-                            }
-                             if ((previous[0]==previous[1])&&((z[0]==onecol)&&(z[1]==onecol))&&(x==1)&&(samex==0)&&(samey==0)&&((previous[0]<=40)&&(previous[0]>30))&&((previous[1]<=40)&&(previous[1]>30)))
-                            {
-                                printf("|   X    Y       ");
-                                samex=1,samey=1,loop++;
-
-                            }
-                            if ((previous[0]==previous[2])&&((z[0]==onecol)&&(z[2]==onecol))&&(x==1)&&(samex==0)&&(samez==0)&&((previous[0]<=40)&&(previous[0]>30))&&((previous[2]<=40)&&(previous[2]>30)))
-                            {
-                                printf("|   X         O  ");
-                                samex=1,samez=1,loop++;
-
-                            }
-                             if ((previous[1]==previous[2])&&((z[1]==onecol)&&(z[2]==onecol))&&(x==1)&&(samey==0)&&(samez==0)&&((previous[1]<=40)&&(previous[1]>30))&&((previous[2]<=40)&&(previous[2]>30)))
-                            {
-                                printf("|        Y    O  ");
-                                samey=1,samez=1,loop++;
-
-                            }
-                        else if((z[0]==onecol)&&(samex==0)&&(x==1)&&((previous[0]<=40)&&(previous[0]>30)))
-                            {
-                            printf("|   X            ");
-                            loop++;
-                            }
-                        else if ((z[1]==onecol)&&(samey==0)&&(x==1)&&((previous[1]<=40)&&(previous[1]>30)))
-                        {
-                            printf("|        Y       ");
-                            loop++;
-                        }
-                        else if ((z[2]==onecol)&&(samez==0)&&(x==1)&&((previous[2]<=40)&&(previous[2]>30)))
-                        {
-                            printf("|             O  ");
-                            loop++;
-                        }
-                        //row 1
-                        else if ((x==0)&&(((current[n]>40)&&(current[n]<=50))||(previous[n]<=50)||(current[n]>50))&&(z[n]==onecol)&&(previous[n]>40))
-                        {
-                            if(moves==roll){
-                            if((current[0]==current[1])&&(current[0]==current[2])&&(current[1]==current[2])&&(current[0]<=50)&&(current[1]<=50)&&(current[2]<=50)&&(samex==0)&&(samey==0)&&(samez==0)&&(current[0]>40)&&(current[1]>40)&&(current[2]>40))
-                               {
-                                printf("|   X    Y    O  ");
-                                samex=1,samey=1,samez=1,loop++;
-                               }
-                               else if((current[0]==current[1])&&(n!=2)&&(current[0]<=50)&&(current[1]<=50)&&(current[0]>40)&&(current[1]>40))
-                               {
-                                   printf("|   X    Y       ");
-                                   samex=1,samey=1,loop++;
-                               }
-                               else if(current[0]==current[2]&&(n!=1)&&(current[0]<=50)&&(current[2]<=50)&&(current[0]>40)&&(current[2]>40))
-                               {
-                                   printf("|   X         O  ");
-                                   samex=1,samez=1,loop++;
-                               }
-                               else if(current[1]==current[2]&&(n!=0)&&(current[2]<=50)&&(current[1]<=50)&&(current[2]>40)&&(current[1]>40))
-                               {
-                                   printf("|        Y    O  ");
-                                   samey=1,samez=1,loop++;
-                               }
-                        else if((n==0)&&(current[0]<=50)&&(current[0]>40))
-                            {
-                            printf("|   X            ");
-                            samex=1,loop++;
-                            }
-                        else if ((n==1)&&(current[1]<=50)&&(current[1]>40))
-                        {
-                            printf("|        Y       ");
-                            samey=1,loop++;
-                        }
-                        else if ((n==2)&&(current[2]<=50)&&(current[2]>40))
-                        {
-                            printf("|             O  ");
-                            samez=1,loop++;
-                        }
-                            }
-                    else if((moves>0)&&(moves!=roll))
-                    {
-                    if ((z[0]==z[1])&&(z[1]==z[2])&&(z[0]==z[2])&&(current[0]<=50)&&(current[1]<=50)&&(current[2]<=50)&&(current[0]>40)&&(current[1]>40)&&(current[2]>40))
-                    {
-                        printf("|   X    Y    O  ");
-                                samex=1,samey=1,samez=1,loop++;
-                    }
-                    else if ((z[0]==z[1])&&(n!=2)&&(current[0]<=50)&&(current[1]<=50)&&(current[0]>40)&&(current[1]>40))
-                    {
-                        printf("|   X    Y       ");
-                        samex=1,samey=1,loop++;
-                    }
-                    else if((z[1]==z[2])&&(n!=0)&&(current[1]<=50)&&(current[2]<=50)&&(current[1]>40)&&(current[2]>40))
-                    {
-                        printf("|        Y    O  ");
-                        samey=1,samez=1,loop++;
-                    }
-                    else if((z[0]==z[2])&&(n!=1)&&(current[0]<=50)&&(current[2]<=50)&&(current[0]>40)&&(current[2]>40))
-                    {
-                        printf("|   X         O  ");
-                        samex=1,samez=1,loop++;
-                    }
-                       else if((n==0)&&(current[0]<=50)&&(current[0]>40))
-                            {
-                            printf("|   X            "),samex=1,loop++;
-                            }
-                        else if ((n==1)&&(current[1]<=50)&&(current[1]>40))
-                        {
-                            printf("|        Y       "),samey=1,loop++;
-                        }
-                        else if ((n==2)&&(current[2]<=50)&&(current[2]>40))
-                        {
-                            printf("|             O  "),samez=1,loop++;
-                        }
-                    }
-                        }
-                        if((previous[0]==previous[1])&&(previous[0]==previous[2])&&(previous[1]==previous[2])&&(z[0]==onecol)&&(z[1]==onecol)&&(z[2]==onecol)&&(x==0)&&((previous[0]<=50)&&(previous[0]>40))&&((previous[1]<=50)&&(previous[1]>40))&&((previous[2]<=50)&&(previous[2]>40))&&(samex==0)&&(samey==0)&&(samez==0))
-                            {
-                                printf("|   X    Y    O  ");
-                                samex=1,samey=1,samez=1,loop++;
-
-                            }
-                             if ((previous[0]==previous[1])&&((z[0]==onecol)&&(z[1]==onecol))&&(x==0)&&(samex==0)&&(samey==0)&&((previous[0]<=50)&&(previous[0]>40))&&((previous[1]<=50)&&(previous[1]>40)))
-                            {
-                                printf("|   X    Y       ");
-                                samex=1,samey=1,loop++;
-
-                            }
-                            if ((previous[0]==previous[2])&&((z[0]==onecol)&&(z[2]==onecol))&&(x==0)&&(samex==0)&&(samez==0)&&((previous[0]<=50)&&(previous[0]>40))&&((previous[2]<=50)&&(previous[2]>40)))
-                            {
-                                printf("|   X         O  ");
-                                samex=1,samez=1,loop++;
-
-                            }
-                             if ((previous[1]==previous[2])&&((z[1]==onecol)&&(z[2]==onecol))&&(x==1)&&(samey==0)&&(samez==0)&&((previous[1]<=50)&&(previous[1]>40))&&((previous[2]<=50)&&(previous[2]>40)))
-                            {
-                                printf("|        Y    O  ");
-                                samey=1,samez=1,loop++;
-
-                            }
-                        else if((z[0]==onecol)&&(samex==0)&&(x==0)&&((  previous[0]<=50)&&(previous[0]>40)))
-                            {
-                            printf("|   X            ");
-                            loop++;
-                            }
-                        else if ((z[1]==onecol)&&(samey==0)&&(x==0)&&((previous[1]<=50)&&(previous[1]>40)))
-                        {
-                            printf("|        Y       ");
-                            loop++;
-                        }
-                        else if ((z[2]==onecol)&&(samez==0)&&(x==0)&&((previous[2]<=50)&&(previous[2]>40)))
-                        {
-                            printf("|             O  ");
-                            loop++;
-                        }
-                    //spacing
-                        if(loop!=0)
-                        {
-                            loop--;
-                        }
-                       else
-                       {
-                           printf("|                ");
-                       }
-
-
-            }
-            printf("\n");
-}
-int boxnumber (int rowcounter,int idcounter){
-
-            int id=0;
-            if ((rowcounter==2)||(rowcounter==4)){
-                for(id=idcounter;id>idcounter-10;id--){
-                printf("|       %2d       ",id);}
-            }else{
-                for(id=idcounter-9;id<idcounter+1;id++){
-                printf("|       %2d       ",id);}
-                }
-            printf("|\n");
-            rowcounter++;
-            return rowcounter;
-            }
-void boxdirections (int rowcounter,int idcounter){
-
-            int id=0;
-            if ((rowcounter==2)||(rowcounter==4)){
-                for(id=idcounter;id>idcounter-10;id--){
-
-                switch (id){
-                    case 40:
-                        printf("|Reverse 10 steps");break;
-                    case 36:
-                        printf("|  Go to box 11  ");break;
-                    case 31:
-                        printf("| Pause 2 turns  ");break;
-                    case 18:
-                        printf("|  Go to box 40  ");break;
-                    default:
-                        printf("|                ");break;
-
-                    }
-                }
-            }else{
-                for(id=idcounter-9;id<idcounter+1;id++){
-
-                switch (id){
-                    case 50:
-                        printf("|      Win!      ");break;
-                    case 48:
-                        printf("|   Go to box 1  ");break;
-                    case 41:
-                        printf("|  Go to box 49  ");break;
-                    case 22:
-                        printf("|   Go to box 33 ");break;
-                    case 8:
-                        printf("| Reverse 3 steps");break;
-                    case 2:
-                        printf("|  Pause 1 turn  ");break;
-                    default:
-                        printf("|                ");break;
-
-                    }
-                }
-            }
-            printf("|\n");
-
+void printline2(){
+    int dash2;
+    for(dash2=0;dash2<139;dash2++){
+        if((dash2>=0)&&(dash2<2)||(dash2<=137&&dash2>134)||(dash2>=3&&dash2<6)){
+            printf(" ");
+        }else if(dash2==2||dash2==138){
+            printf("|");
+        }else{printf("-");}
     }
 
 
+}
+
+void printline(){
+    int dash;
+    for(dash=0;dash<138;dash++){
+        if((dash>=0)&&(dash<3)){
+        printf(" ");
+        }else{printf("-");}
+    }
+
+}
+
+void printboard (char x[],char y[],char o[]){
+    int coloumn,row,boxnumber[]={41,42,43,44,45,46,47,48,49,50,40,39,38,37,36,35,34,33,32,31,21,22,23,24,25,26,27,28,29,30,20,19,18,17,16,15,14,13,12,11,1,2,3,4,5,6,7,8,9,10}
+    ,counter_box_number=0,counter_X=0,counter_Y=0,counter_O=0;
+
+    for (row=0;row<5;row++){
+    for(coloumn=0;coloumn<10;coloumn++){
+    printf(" ------------ ");
+    }printf("\n");
+    for(coloumn=0;coloumn<10;coloumn++){
+    printf("|            |");
+    }printf("\n");
+    for(coloumn=0;coloumn<10;coloumn++){
+    if (row==0){
+        if (counter_box_number==0){printf("|    GT49    |");}
+        else if (counter_box_number==7){printf("|    GT 2    |");}
+        else {printf("|     %d     |",boxnumber[counter_box_number]);}
+        counter_box_number++;
+    }else if (row==1){
+        if (counter_box_number==10){printf("|    R 10    |");}
+        else if (counter_box_number==14){printf("|    GT11    |");}
+        else if (counter_box_number==19){printf("|     P2     |");}
+        else {printf("|     %d     |",boxnumber[counter_box_number]);}
+        counter_box_number++;
+    }else if (row==2){
+        if (counter_box_number==21){printf("|    GT33    |");}
+        else {printf("|     %d     |",boxnumber[counter_box_number]);}
+        counter_box_number++;
+    }else if (row==3){
+        if (counter_box_number==32){printf("|    GT40    |");}
+        else {printf("|     %d     |",boxnumber[counter_box_number]);}
+        counter_box_number++;
+    }else if (row==4){
+        if (counter_box_number==41){printf("|     P1     |");}
+        else if (counter_box_number==47){printf("|     R3     |");}
+        else if (counter_box_number==49){printf("|     %d     |",boxnumber[counter_box_number]);}
+        else {printf("|      %d     |",boxnumber[counter_box_number]);}
+        counter_box_number++;
+    }
+    }printf("\n");
+    for(coloumn=0;coloumn<10;coloumn++){
+    printf("|            |");
+    }printf("\n");
+    for(coloumn=0;coloumn<10;coloumn++){
+    printf("|  %c  %c  %c   |",x[counter_X],y[counter_Y],o[counter_O]);
+    counter_O++,counter_X++,counter_Y++;
+    }printf("\n");
+    for(coloumn=0;coloumn<10;coloumn++){
+    printf("|            |");
+    }printf("\n");
+    for(coloumn=0;coloumn<10;coloumn++){
+    printf(" ------------ ");
+    }
+    printf("\n");
+    }printf("GT : Go to tile\nR : Reverse steps\nP : Pause round\n\n\n");}
+
+int firstpage (){
+    int number;
+    printf("\n\n");printline();
+    printf("\n");printline2();
+    printf("\n  |  |                                                                                  ___                         ___                |  | ");
+    printf("\n  |  |                                                                                 |   |                       |   |               |  | ");
+    printf("\n  |  |                           ____                                                  |   |_______________________|   |               |  | ");
+    printf("\n  |  |             _____________|    .|_____|                                          |   |_______________________|   |               |  | ");
+    printf("\n  |  |            |  ___________     .|     |                                          |   | Enter 1 for :         |   |               |  | ");
+    printf("\n  |  |            |  |           -----                                                 |   |                       |   |               |  | ");
+    printf("\n  |  |            |  |                                          __                     |   |     Single Player     |   |               |  | ");
+    printf("\n  |  |            |  |_______________  _____     _    ______   |  |  __   _____        |   |_______________________|   |               |  | ");
+    printf("\n  |  |            |_______________   | |    '   | |  '      '  |  | '  ' |  ___|       |   |_______________________|   |               |  | ");
+    printf("\n  |  |                            |  | |  |' '  | | |   __   | |  |'  '  |  |__        |   | Enter 2 for :         |   |               |  | ");
+    printf("\n  |  |                            |  | |  | ' ' | | |  |__|  | |     '   |   __|       |   |                       |   |               |  | ");
+    printf("\n  |  |             _______________|  | |  |  ' '  | |   ___  | |  |'  '  |  |__        |   |     Multiplayer       |   |               |  | ");
+    printf("\n  |  |            <__________________| |__|   ' __| |__|   |_| |__| '__' |_____|       |   |_______________________|   |               |  | ");
+    printf("\n  |  |                           __                                         ____       |   |_______________________|   |               |  | ");
+    printf("\n  |  |                          |  |              AND___     ___     ____  |  _ '      |   | Enter 3 to :         |   |               |  | ");
+    printf("\n  |  |                          |  |        ____    |  _ '  |  _ '  |  __| | |_| |     |   |                       |   |               |  | ");
+    printf("\n  |  |                          |  |       ' ___ '  | | ' ' | | ' ' | |__  |    _'     |   |        Quit           |   |               |  | ");
+    printf("\n  |  |                          |  |      |  |_|  | | | | | | | | | |  __| | |' '      |   |_______________________|   |               |  | ");
+    printf("\n  |  |                          |  |____  |  ___  | | |_' ' | |_' ' |  |___|_|_'_'___  |   |_______________________|   |               |  | ");
+    printf("\n  |  |                          |_______| |__| |__| |____'  |___ '  |________________| |   |                       |   |               |  | ");
+    printf("\n  |  |                                                                                 |___|                       |___|               |  | ");
+    printf("\n  |  |                                                                                                                                 |  | ");
+    printf("\n  |  |                                                                                                                                 |  | ");
+    printf("\n  |  |                                                                                                                                 |  | ");
+    printf("\n  |  |                                                                                                                                 |  | ");
+    printf("\n  |  |                                                                                                                                 |  | ");
+    printf("\n");printline2();
+    printf("\n");printline();
+    printf("\n\tPlease Enter Your Choice Here : ");
+    scanf(" %d",&number);
+
+    return number;}
+
+void x_move(int *current_x, int *previous_x,char location_of_chess_Y[],int *counter,char location_of_chess_X[],char location_of_chess_O[],int *win,int *pause_x){
+    int roll,moved=0,move_left=0;
+    roll=rand()%6;
+    roll++;
+    if (((*previous_x)==2)&&(((*current_x)==2))&&(*pause_x>=1)){printf("X is trapped, "),roll=0,(*pause_x)-=2;}
+    if (((*previous_x)==31)&&(((*current_x)==31))&&(*pause_x>=1)){printf("X is trapped, "),roll=0,(*pause_x)--;}
+    printf("X get %d point",roll);
+    Sleep(1000);
+    (*current_x)+=roll;
+    system("cls");
+        for (;((*previous_x)<(*current_x))||(move_left!=0);(*previous_x)++){
+        location_of_chess_X[(*counter)]='X';
+        printboard(location_of_chess_X,location_of_chess_Y,location_of_chess_O);
+        Sleep(400);
+        system("cls");
+        location_of_chess_X[(*counter)]=' ';
+        if (((*previous_x)==17)&&(((*current_x)==18))){printf("X is moved to box 40, \n"),Sleep(1000),(*current_x)=40,(*previous_x)=39,roll=0,location_of_chess_X[(*counter)]=' ',(*counter)=11;}
+        if (((*previous_x)==7)&&(((*current_x)==8))){printf("X is forced to reverse 3 steps, \n"),Sleep(1000),(*current_x)-=3,(*previous_x)-=3,roll=0,location_of_chess_X[(*counter)]=' ',(*counter)-=3;}
+        if (((*previous_x)==21)&&(((*current_x)==22))){printf("X is moved to box 33, \n"),Sleep(1000),(*current_x)=33,(*previous_x)=32,roll=0,location_of_chess_X[(*counter)]=' ',(*counter)=18;}
+        if (((*previous_x)==35)&&(((*current_x)==36))){printf("X is moved to box 11, \n"),Sleep(1000),(*current_x)=11,(*previous_x)=10,roll=0,location_of_chess_X[(*counter)]=' ',(*counter)=49;}
+        if (((*previous_x)==39)&&(((*current_x)==40))){printf("X is forced to reverse 10 steps, \n"),Sleep(1000),(*current_x)-=10,(*previous_x)-=10,roll=0,location_of_chess_X[(*counter)]=' ',(*counter)=28;}
+        if (((*previous_x)==40)&&(((*current_x)==41))){printf("X is moved to box 49, \n"),Sleep(1000),(*current_x)=49,(*previous_x)=48,roll=0,location_of_chess_X[(*counter)]=' ',(*counter)=7;}
+        if (((*previous_x)==47)&&(((*current_x)==48))){printf("X is moved to box 2, \n"),Sleep(1000),(*current_x)=2,(*previous_x)=1,roll=0,location_of_chess_X[(*counter)]=' ',(*counter)=40;}
+        if (*pause_x==0){(*pause_x)=2;}
+        if ((((((*counter)<=48)&&((*counter)>=40))||(((*counter)<=28)&&((*counter)>=20))||(((*counter)<=8)&&((*counter)>=0)))&&(moved==0))&&(move_left==0)){(*counter)++,moved=1;}
+        if ((((((*counter)>=31)&&((*counter)<=39))||(((*counter)>=11)&&((*counter)<=19)))&&(moved==0))&&(move_left==0)){(*counter)--,moved=1;}
+        if ((((*counter)==49||(*counter)==39||(*counter)==29||(*counter)==19||(*counter)==30||(*counter)==20||(*counter)==10)&&(moved==0))&&(move_left==0)){(*counter)=(*counter)-10,moved=1;}
+        if ((*counter==9)&&((*previous_x)!=((*current_x)-1))){move_left=((*current_x)-(*previous_x));}
+        if ((move_left!=0)&&(moved==0)){(*counter)--,moved=1,move_left--;}
+        if (move_left==0&&(*counter)==9){system("cls"),printf("X win\n"),Sleep(1500),(*win)=1;}
+        moved=0;
+        }
+        location_of_chess_X[(*counter)]='X';
+        printboard(location_of_chess_X,location_of_chess_Y,location_of_chess_O);
+}
+
+void computermove (int *current_y, int *previous_y,char location_of_chess_Y[],int *counter1,char location_of_chess_X[],char location_of_chess_O[],int *win,int *pause_y){
+    int roll,moved=0,move_left=0;
+    roll=rand()%6;
+    roll++;
+    if (((*previous_y)==2)&&(((*current_y)==2))&&(*pause_y>=1)){printf("Y is trapped, "),roll=0,(*pause_y)-=2;}
+    if (((*previous_y)==31)&&(((*current_y)==31))&&(*pause_y>=1)){printf("Y is trapped, "),roll=0,(*pause_y)--;}
+    printf("Computer get %d point",roll);
+    Sleep(1000);
+    (*current_y)+=roll;
+    system("cls");
+        for (;(*previous_y)<(*current_y);(*previous_y)++){
+        location_of_chess_Y[(*counter1)]='Y';
+        printboard(location_of_chess_X,location_of_chess_Y,location_of_chess_O);
+        Sleep(400);
+        system("cls");
+        location_of_chess_Y[(*counter1)]=' ';
+        if (((*previous_y)==17)&&(((*current_y)==18))){printf("Y is moved to box 40, \n"),Sleep(1000),(*current_y)=40,(*previous_y)=39,roll=0,location_of_chess_Y[(*counter1)]=' ',(*counter1)=11;}
+        if (((*previous_y)==7)&&(((*current_y)==8))){printf("Y is forced to reverse 3 steps, \n"),Sleep(1000),(*current_y)-=3,(*previous_y)-=3,roll=0,location_of_chess_Y[(*counter1)]=' ',(*counter1)-=3;}
+        if (((*previous_y)==21)&&(((*current_y)==22))){printf("Y is moved to box 33, \n"),Sleep(1000),(*current_y)=33,(*previous_y)=32,roll=0,location_of_chess_Y[(*counter1)]=' ',(*counter1)=18;}
+        if (((*previous_y)==35)&&(((*current_y)==36))){printf("Y is moved to box 11, \n"),Sleep(1000),(*current_y)=11,(*previous_y)=10,roll=0,location_of_chess_Y[(*counter1)]=' ',(*counter1)=49;}
+        if (((*previous_y)==39)&&(((*current_y)==40))){printf("Y is forced to reverse 10 steps, \n"),Sleep(1000),(*current_y)-=10,(*previous_y)-=10,roll=0,location_of_chess_Y[(*counter1)]=' ',(*counter1)=28;}
+        if (((*previous_y)==40)&&(((*current_y)==41))){printf("Y is moved to box 49, \n"),Sleep(1000),(*current_y)=49,(*previous_y)=48,roll=0,location_of_chess_Y[(*counter1)]=' ',(*counter1)=7;}
+        if (((*previous_y)==47)&&(((*current_y)==48))){printf("Y is moved to box 2, \n"),Sleep(1000),(*current_y)=2,(*previous_y)=1,roll=0,location_of_chess_Y[(*counter1)]=' ',(*counter1)=40;}
+        if (*pause_y==0){(*pause_y)=2;}
+        if ((((((*counter1)<=48)&&((*counter1)>=40))||(((*counter1)<=28)&&((*counter1)>=20))||(((*counter1)<=8)&&((*counter1)>=0)))&&(moved==0))&&(move_left==0)){(*counter1)++,moved=1;}
+        if ((((((*counter1)>=31)&&((*counter1)<=39))||(((*counter1)>=11)&&((*counter1)<=19)))&&(moved==0))&&(move_left==0)){(*counter1)--,moved=1;}
+        if ((((*counter1)==49||(*counter1)==39||(*counter1)==29||(*counter1)==19||(*counter1)==30||(*counter1)==20||(*counter1)==10)&&(moved==0))&&(move_left==0)){(*counter1)=(*counter1)-10,moved=1;}
+        if ((*counter1==9)&&((*previous_y)!=((*current_y)-1))){move_left=((*current_y)-(*previous_y));}
+        if ((move_left!=0)&&(moved==0)){(*counter1)--,moved=1,move_left--;}
+        if (move_left==0&&(*counter1)==9){system("cls"),printf("Computer win\n"),Sleep(1500),(*win)=1;}
+        moved=0;
+        }
+        location_of_chess_Y[(*counter1)]='Y';
+        printboard(location_of_chess_X,location_of_chess_Y,location_of_chess_O);
+}
+
+void y_move (int *current_y, int *previous_y,char location_of_chess_Y[],int *counter1,char location_of_chess_X[],char location_of_chess_O[],int *win,int *pause_y){
+    int roll,moved=0,move_left=0;
+    roll=rand()%6;
+    roll++;
+    if (((*previous_y)==2)&&(((*current_y)==2))&&(*pause_y>=1)){printf("Y is trapped, "),roll=0,(*pause_y)-=2;}
+    if (((*previous_y)==31)&&(((*current_y)==31))&&(*pause_y>=1)){printf("Y is trapped, "),roll=0,(*pause_y)--;}
+    printf("Y get %d point",roll);
+    Sleep(1000);
+    (*current_y)+=roll;
+    system("cls");
+        for (;(*previous_y)<(*current_y);(*previous_y)++){
+        location_of_chess_Y[(*counter1)]='Y';
+        printboard(location_of_chess_X,location_of_chess_Y,location_of_chess_O);
+        Sleep(400);
+        system("cls");
+        location_of_chess_Y[(*counter1)]=' ';
+        if (((*previous_y)==17)&&(((*current_y)==18))){printf("Y is moved to box 40, \n"),Sleep(1000),(*current_y)=40,(*previous_y)=39,roll=0,location_of_chess_Y[(*counter1)]=' ',(*counter1)=11;}
+        if (((*previous_y)==7)&&(((*current_y)==8))){printf("Y is forced to reverse 3 steps, \n"),Sleep(1000),(*current_y)-=3,(*previous_y)-=3,roll=0,location_of_chess_Y[(*counter1)]=' ',(*counter1)-=3;}
+        if (((*previous_y)==21)&&(((*current_y)==22))){printf("Y is moved to box 33, \n"),Sleep(1000),(*current_y)=33,(*previous_y)=32,roll=0,location_of_chess_Y[(*counter1)]=' ',(*counter1)=18;}
+        if (((*previous_y)==35)&&(((*current_y)==36))){printf("Y is moved to box 11, \n"),Sleep(1000),(*current_y)=11,(*previous_y)=10,roll=0,location_of_chess_Y[(*counter1)]=' ',(*counter1)=49;}
+        if (((*previous_y)==39)&&(((*current_y)==40))){printf("Y is forced to reverse 10 steps, \n"),Sleep(1000),(*current_y)-=10,(*previous_y)-=10,roll=0,location_of_chess_Y[(*counter1)]=' ',(*counter1)=28;}
+        if (((*previous_y)==40)&&(((*current_y)==41))){printf("Y is moved to box 49, \n"),Sleep(1000),(*current_y)=49,(*previous_y)=48,roll=0,location_of_chess_Y[(*counter1)]=' ',(*counter1)=7;}
+        if (((*previous_y)==47)&&(((*current_y)==48))){printf("Y is moved to box 2, \n"),Sleep(1000),(*current_y)=2,(*previous_y)=1,roll=0,location_of_chess_Y[(*counter1)]=' ',(*counter1)=40;}
+        if (*pause_y==0){(*pause_y)=2;}
+        if ((((((*counter1)<=48)&&((*counter1)>=40))||(((*counter1)<=28)&&((*counter1)>=20))||(((*counter1)<=8)&&((*counter1)>=0)))&&(moved==0))&&(move_left==0)){(*counter1)++,moved=1;}
+        if ((((((*counter1)>=31)&&((*counter1)<=39))||(((*counter1)>=11)&&((*counter1)<=19)))&&(moved==0))&&(move_left==0)){(*counter1)--,moved=1;}
+        if ((((*counter1)==49||(*counter1)==39||(*counter1)==29||(*counter1)==19||(*counter1)==30||(*counter1)==20||(*counter1)==10)&&(moved==0))&&(move_left==0)){(*counter1)=(*counter1)-10,moved=1;}
+        if ((*counter1==9)&&((*previous_y)!=((*current_y)-1))){move_left=((*current_y)-(*previous_y));}
+        if ((move_left!=0)&&(moved==0)){(*counter1)--,moved=1,move_left--;}
+        if (move_left==0&&(*counter1)==9){system("cls"),printf("Y win\n"),Sleep(1500),(*win)=1;}
+        moved=0;
+        }
+        location_of_chess_Y[(*counter1)]='Y';
+        printboard(location_of_chess_X,location_of_chess_Y,location_of_chess_O);
+}
+
+void o_move (int *current_o, int *previous_o,char location_of_chess_Y[],int *counter2,char location_of_chess_X[],char location_of_chess_O[],int *win,int *pause_o){
+    int roll,moved=0,move_left=0;
+    roll=rand()%6;
+    roll++;
+    if (((*previous_o)==2)&&(((*current_o)==2))&&(*pause_o>=1)){printf("O is trapped, "),roll=0,(*pause_o)-=2;}
+    if (((*previous_o)==31)&&(((*current_o)==31))&&(*pause_o>=1)){printf("O is trapped, "),roll=0,(*pause_o)--;}
+    printf("O get %d point",roll);
+    Sleep(1000);
+    (*current_o)+=roll;
+    system("cls");
+        for (;(*previous_o)<(*current_o);(*previous_o)++){
+        location_of_chess_O[(*counter2)]='O';
+        printboard(location_of_chess_X,location_of_chess_Y,location_of_chess_O);
+        Sleep(400);
+        system("cls");
+        location_of_chess_O[(*counter2)]=' ';
+        if (((*previous_o)==17)&&(((*current_o)==18))){printf("O is moved to box 40, \n"),Sleep(1000),(*current_o)=40,(*previous_o)=39,roll=0,location_of_chess_O[(*counter2)]=' ',(*counter2)=11;}
+        if (((*previous_o)==7)&&(((*current_o)==8))){printf("O is forced to reverse 3 steps, \n"),Sleep(1000),(*current_o)-=3,(*previous_o)-=3,roll=0,location_of_chess_O[(*counter2)]=' ',(*counter2)-=3;}
+        if (((*previous_o)==21)&&(((*current_o)==22))){printf("O is moved to box 33, \n"),Sleep(1000),(*current_o)=33,(*previous_o)=32,roll=0,location_of_chess_O[(*counter2)]=' ',(*counter2)=18;}
+        if (((*previous_o)==35)&&(((*current_o)==36))){printf("O is moved to box 11, \n"),Sleep(1000),(*current_o)=11,(*previous_o)=10,roll=0,location_of_chess_O[(*counter2)]=' ',(*counter2)=49;}
+        if (((*previous_o)==39)&&(((*current_o)==40))){printf("O is forced to reverse 10 steps, \n"),Sleep(1000),(*current_o)-=10,(*previous_o)-=10,roll=0,location_of_chess_O[(*counter2)]=' ',(*counter2)=28;}
+        if (((*previous_o)==40)&&(((*current_o)==41))){printf("O is moved to box 49, \n"),Sleep(1000),(*current_o)=49,(*previous_o)=48,roll=0,location_of_chess_O[(*counter2)]=' ',(*counter2)=7;}
+        if (((*previous_o)==47)&&(((*current_o)==48))){printf("O is moved to box 2, \n"),Sleep(1000),(*current_o)=2,(*previous_o)=1,roll=0,location_of_chess_O[(*counter2)]=' ',(*counter2)=40;}
+        if (*pause_o==0){(*pause_o)=2;}
+        if ((((((*counter2)<=48)&&((*counter2)>=40))||(((*counter2)<=28)&&((*counter2)>=20))||(((*counter2)<=8)&&((*counter2)>=0)))&&(moved==0))&&(move_left==0)){(*counter2)++,moved=1;}
+        if ((((((*counter2)>=31)&&((*counter2)<=39))||(((*counter2)>=11)&&((*counter2)<=19)))&&(moved==0))&&(move_left==0)){(*counter2)--,moved=1;}
+        if ((((*counter2)==49||(*counter2)==39||(*counter2)==29||(*counter2)==19||(*counter2)==30||(*counter2)==20||(*counter2)==10)&&(moved==0))&&(move_left==0)){(*counter2)=(*counter2)-10,moved=1;}
+        if ((*counter2==9)&&((*previous_o)!=((*current_o)-1))){move_left=((*current_o)-(*previous_o));}
+        if ((move_left!=0)&&(moved==0)){(*counter2)--,moved=1,move_left--;}
+        if (move_left==0&&(*counter2)==9){system("cls"),printf("O win\n"),Sleep(1500),(*win)=1;}
+        moved=0;
+        }
+        location_of_chess_O[(*counter2)]='O';
+        printboard(location_of_chess_X,location_of_chess_Y,location_of_chess_O);
+}
 
 int main()
 {
-    int row,idcounter=50,rowcounter=1,roll=0,moves=0,x=0,reset=0,reverse=0,loop=0,n=0,player=3,dice=0;
-    char again='y',go;
-    int current[3]={1,1,1},previous[3]={1,1,1},movement[3]={0,0,0},times[3]={0,0,0};
+    char location_of_chess_X[50]={},location_of_chess_Y[50]={},location_of_chess_O[50]={},again='\n';
+    int userchoice=1,sequence,roll,current_x=1,previous_x=1,current_y=1,previous_y=1,current_o=1,previous_o=1,counter=40,counter1=40,counter2=40,moved=0,win=0
+        ,pause_x=2,pause_y=2,pause_o=2,no_player=0;
     time_t t;
-    srand((unsigned)time(&t));
-    scanf("%c",&again);
-    while(again=='\n'){
-    for(n=0;n<player;n++){
-    roll=rand()%6;
-    roll++;
-    current[n]+=roll;
-    dice=roll;
-    printf("You rolled a %d!!!\n",roll);
-    for(moves=0;moves<=roll;moves++)
-    {
-        printf("You rolled a %d!!!\n",dice);
-        if (moves==0)
-        {
 
-        }
-         else if ((current[n]<=10)&&(times[n]>=1))
-            {
-                movement[n]++;
+    while (userchoice==1||userchoice==2){
+    userchoice=firstpage();
+    if (userchoice==1){
+        system("cls");
+        location_of_chess_X[40]='X',location_of_chess_Y[40]='Y',location_of_chess_O[40]='O';
+        printboard(location_of_chess_X,location_of_chess_Y,location_of_chess_O);
+        printf("You will be playing with the computer");
+        printf("\nPress 1 to start first, press 2 to let computer start first :");
+        scanf(" %d",&sequence);
+        scanf("%c",&again);
+        if (sequence==1){
+            system("cls");
+            printf("You will start first");
+            Sleep(1000);
+            system("cls");
+            location_of_chess_X[40]='X',location_of_chess_Y[40]='Y',location_of_chess_O[40]='O';
+            printboard(location_of_chess_X,location_of_chess_Y,location_of_chess_O);
+            while((again=='\n')&&(win==0)){
+            printf("Press enter to roll dice \n");
+            scanf("%c",&again);
+            x_move(&current_x,&previous_x,location_of_chess_Y,&counter,location_of_chess_X,location_of_chess_O,&win,&pause_x);
+            computermove(&current_y,&previous_y,location_of_chess_Y,&counter1,location_of_chess_X,location_of_chess_O,&win,&pause_y);
+            }if (win==1){current_x=0,previous_x=0,current_y=0,previous_y=0,current_o=0,previous_o=0,
+                        location_of_chess_O[counter2]='\0',location_of_chess_Y[counter1]='\0',location_of_chess_X[counter]='\0',
+                        counter1=40,counter=40,counter2=40,win=0;}
             }
-            else if((current[n]>10)&&(current[n]<=20))
-            {
-                if(previous[n]<=10)
-                {
-                    if (previous[n]==10)
-                    {
-                        if(current[n]>10)
-                        {
-                            previous[n]++;
-                            x++;
-                        }
-
-                    }
-                    else if (previous[n]<=10){
-                    movement[n]++,previous[n]++,x++;
-                    }
-                }
-                else if(previous[n]==11)
-                {
-                    if (roll>1){
-                        if(moves>1)
-                        {
-                            movement[n]=9;
-                        }
-                        else{
-                                movement[n]--;}
-
-                    }
-                    else{
-                        movement[n]--;
-                    }
-                }
-                else{
-                movement[n]--;
-            }}
-            else if((current[n]>20)&&(current[n]<=30))
-            {
-                if (previous[n]<=20)
-                {
-                    if (previous[n]==20)
-                    {
-                        if(current[n]>20)
-                        {
-                            previous[n]++;
-                            x++;
-                        }
-
-                    }
-                    else if(previous[n]<=20){
-                        movement[n]--,previous[n]++,x++;
-                    }
-                }
-                else if(previous[n]==21)
-                {
-                    if (roll>1){
-                            if(moves>1)
-                        {
-                            movement[n]=0;
-                        }
-                        else{
-                                movement[n]++;}
-                    }
-                    else
-                    {
-                        movement[n]++;
-                    }
-                }
-                else
-                {
-                    movement[n]++;
-                }
-            }
-            else if((current[n]>30)&&(current[n]<=40))
-            {
-                if (previous[n]<=30)
-                {
-                    if (previous[n]==30)
-                    {
-                        if(current[n]>30)
-                        {
-                            previous[n]++;
-                            x++;
-                        }
-
-                    }
-                    else if(previous[n]<=30){
-                        movement[n]++,previous[n]++,x++;
-                    }
-                }
-                else if(previous[n]==31)
-                {
-                    if (roll>1)
-                    {
-                            if(moves>1)
-                        {
-                            movement[n]=9;
-                        }
-                        else{
-                                movement[n]--;}
-                    }
-                    else
-                        {
-                        movement[n]--;
-                        }
-
-                }
-                else
-                {
-                    movement[n]--;
-                }
-            }
-            else if((current[n]>40)&&(current[n]<=50)||(current[n]>50))
-            {
-                if (previous[n]<=40)
-                {
-                    if (previous[n]==40)
-                    {
-                        if(current[n]>40)
-                        {
-                            previous[n]++;
-                            x++;
-                        }
-                    }
-                    else if(previous[n]<=40){
-                        movement[n]--,previous[n]++,x++;
-                    }}
-                else if(previous[n]==41)
-                {
-                    if (roll>1)
-                    {
-                        if(moves>1)
-                        {
-                            movement[n]=0;
-                        }
-                        else{
-                                movement[n]++;}
-                    }
-                    else
-                    {
-                        movement[n]++;
-                    }
-                }
-                else if(previous[n]<=50)
-                {
-                    if(current[n]>50)
-                {
-                    reverse=current[n]-50;
-                    loop=roll-reverse;
-                    if (moves>=loop)
-                {
-                movement[n]--;
-                }
-                else
-                {
-                    movement[n]++;
-                }
-                }
-                else{
-                    movement[n]++;
-                }
-                }
-            }
-            times[n]++;
-        int row,idcounter=50,rowcounter=1;
-    for(row=0;row<5;row++){
-            rowdivider();
-            coldivider();
-            boxdirections(rowcounter,idcounter);
-            coldivider();
-            rowcounter = boxnumber(rowcounter,idcounter);
-            coldivider();
-            coldivider();
-            coldivider5(row,n,current,previous,movement,player,roll,moves,times);
-            idcounter-=10;
-    }
-            rowdivider();
-            if (moves==0)
-            {
-                scanf("%c",&go);
-            }
-            if(moves==roll)
-            {
-
-            }
-            else{
-            Sleep(300);
-             system("cls");
-            }
-             if ((previous[n]==11)||(previous[n]==12)||(previous[n]==21)||(previous[n]==22)||(previous[n]==31)||(previous[n]==32)||(previous[n]==41)||(previous[n]==42))
-             {
-                 previous[n]++;
-                 x++;
-             }
-
-    }
-    scanf("%c",&again);
-    Sleep(0);
-    system("cls");
-    previous[n]+=roll-x;
-    if(current[n]>50)
-    {
-        current[n]=current[n]-roll+loop-reverse;
-        previous[n]=current[n];
-    }
-    if (current[n]==50)
-    {
-        printf("PLAYER %d HAS WON THE GAME!!!!!",n+1);
-        return 0;
-    }
-    loop=0,reverse=0;
-    x=0;
-    }
-    }
+        else if(sequence==2){
+            system("cls");
+            printf("Second to start");
+            Sleep(1000);
+            system("cls");
+            location_of_chess_X[40]='X',location_of_chess_Y[40]='Y',location_of_chess_O[40]='O';
+            printboard(location_of_chess_X,location_of_chess_Y,location_of_chess_O);
+            while((again=='\n')&&(win==0)){
+            computermove(&current_y,&previous_y,location_of_chess_Y,&counter1,location_of_chess_X,location_of_chess_O,&win,&pause_y);
+            printf("Press enter to roll dice \n");
+            scanf("%c",&again);
+            x_move(&current_x,&previous_x,location_of_chess_Y,&counter,location_of_chess_X,location_of_chess_O,&win,&pause_x);
+            }if (win==1){current_x=0,previous_x=0,current_y=0,previous_y=0,current_o=0,previous_o=0,
+                        location_of_chess_O[counter2]='\0',location_of_chess_Y[counter1]='\0',location_of_chess_X[counter]='\0',
+                        counter1=40,counter=40,counter2=40,win=0;}
+            }else {printf("Error input");}
+    }else if (userchoice==2){
+        system("cls");
+        printboard(location_of_chess_X,location_of_chess_Y,location_of_chess_O);
+        printf("How many players ? (MAX 3)(LEAST 2) : ");
+        scanf(" %d",&no_player);
+        scanf("%c",&again);
+        if (no_player==2){
+            system("cls");
+            printf("2 players");
+            system("cls");
+            location_of_chess_X[40]='X',location_of_chess_Y[40]='Y',location_of_chess_O[40]='O';
+            printboard(location_of_chess_X,location_of_chess_Y,location_of_chess_O);
+            while((again=='\n')&&(win==0)){
+            printf("X's turn - Press enter to roll dice \n");
+            scanf("%c",&again);
+            x_move(&current_x,&previous_x,location_of_chess_Y,&counter,location_of_chess_X,location_of_chess_O,&win,&pause_x);
+            printf("Y's turn - Press enter to roll dice \n");
+            scanf("%c",&again);
+            y_move(&current_y,&previous_y,location_of_chess_Y,&counter1,location_of_chess_X,location_of_chess_O,&win,&pause_y);
+            }if (win==1){current_x=0,previous_x=0,current_y=0,previous_y=0,current_o=0,previous_o=0,
+                        location_of_chess_O[counter2]='\0',location_of_chess_Y[counter1]='\0',location_of_chess_X[counter]='\0',
+                        counter1=40,counter=40,counter2=40,win=0;}
+        }else if (no_player==3){
+            system("cls");
+            printf("3 players");
+            system("cls");
+            location_of_chess_X[40]='X',location_of_chess_Y[40]='Y',location_of_chess_O[40]='O';
+            printboard(location_of_chess_X,location_of_chess_Y,location_of_chess_O);
+            while((again=='\n')&&(win==0)){
+            printf("X's turn - Press enter to roll dice \n");
+            scanf("%c",&again);
+            x_move(&current_x,&previous_x,location_of_chess_Y,&counter,location_of_chess_X,location_of_chess_O,&win,&pause_x);
+            printf("Y's turn - Press enter to roll dice \n");
+            scanf("%c",&again);
+            y_move(&current_y,&previous_y,location_of_chess_Y,&counter1,location_of_chess_X,location_of_chess_O,&win,&pause_y);
+            printf("O's turn - Press enter to roll dice \n");
+            scanf("%c",&again);
+            o_move(&current_o,&previous_o,location_of_chess_Y,&counter2,location_of_chess_X,location_of_chess_O,&win,&pause_o);
+            }if (win==1){current_x=0,previous_x=0,current_y=0,previous_y=0,current_o=0,previous_o=0,
+                        location_of_chess_O[counter2]='\0',location_of_chess_Y[counter1]='\0',location_of_chess_X[counter]='\0',
+                        counter1=40,counter=40,counter2=40,win=0;}
+        }else {printf("Input error");}
+    }system("cls");
+    }end();
     return 0;
 }
