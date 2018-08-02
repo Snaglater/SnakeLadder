@@ -176,7 +176,7 @@ void x_move(int *current_x, int *previous_x,char location_of_chess_Y[],int *coun
         location_of_chess_X[(*counter)]='X';
         printboard(location_of_chess_X,location_of_chess_Y,location_of_chess_O);
         Sleep(400);
-        system("cls");
+        printf("counter : %d\nprevious_x : %d \n current_x : %d\n",*counter,*previous_x,*current_x);
         location_of_chess_X[(*counter)]=' ';
         //To move the chess to new location when it stops at special tiles
         if (((*previous_x)==17)&&(((*current_x)==18))){printf("X is moved to box 40, \n"),Sleep(1000),(*current_x)=40,(*previous_x)=39,roll=0,location_of_chess_X[(*counter)]=' ',(*counter)=11;}
@@ -185,7 +185,10 @@ void x_move(int *current_x, int *previous_x,char location_of_chess_Y[],int *coun
         if (((*previous_x)==35)&&(((*current_x)==36))){printf("X is moved to box 11, \n"),Sleep(1000),(*current_x)=11,(*previous_x)=10,roll=0,location_of_chess_X[(*counter)]=' ',(*counter)=49;}
         if (((*previous_x)==39)&&(((*current_x)==40))){printf("X is forced to reverse 10 steps, \n"),Sleep(1000),(*current_x)-=10,(*previous_x)-=10,roll=0,location_of_chess_X[(*counter)]=' ',(*counter)=28;}
         if (((*previous_x)==40)&&(((*current_x)==41))){printf("X is moved to box 49, \n"),Sleep(1000),(*current_x)=49,(*previous_x)=48,roll=0,location_of_chess_X[(*counter)]=' ',(*counter)=7;}
-        if (((*previous_x)==47)&&(((*current_x)==48))){printf("X is moved to box 2, \n"),Sleep(1000),(*current_x)=2,(*previous_x)=1,roll=0,location_of_chess_X[(*counter)]=' ',(*counter)=40;}
+        if (((*previous_x)+1==(*current_x))&&((*counter==8)||(*counter==6))){printf("X is moved to box 2, \n"),Sleep(1000),(*current_x)=2,(*previous_x)=1,roll=0,location_of_chess_X[(*counter)]=' ';
+                    if((*counter)==6){(*counter)=40;
+                    }else if((*counter)==8){(*counter)=42;}
+        }
         if (*pause_x==0){(*pause_x)=2;}
         if ((((((*counter)<=48)&&((*counter)>=40))||(((*counter)<=28)&&((*counter)>=20))||(((*counter)<=8)&&((*counter)>=0)))&&(moved==0))&&(move_left==0)){(*counter)++,moved=1;}
         if ((((((*counter)>=31)&&((*counter)<=39))||(((*counter)>=11)&&((*counter)<=19)))&&(moved==0))&&(move_left==0)){(*counter)--,moved=1;}
@@ -224,7 +227,10 @@ void computermove (int *current_y, int *previous_y,char location_of_chess_Y[],in
         if (((*previous_y)==35)&&(((*current_y)==36))){printf("Y is moved to box 11, \n"),Sleep(1000),(*current_y)=11,(*previous_y)=10,roll=0,location_of_chess_Y[(*counter1)]=' ',(*counter1)=49;}
         if (((*previous_y)==39)&&(((*current_y)==40))){printf("Y is forced to reverse 10 steps, \n"),Sleep(1000),(*current_y)-=10,(*previous_y)-=10,roll=0,location_of_chess_Y[(*counter1)]=' ',(*counter1)=28;}
         if (((*previous_y)==40)&&(((*current_y)==41))){printf("Y is moved to box 49, \n"),Sleep(1000),(*current_y)=49,(*previous_y)=48,roll=0,location_of_chess_Y[(*counter1)]=' ',(*counter1)=7;}
-        if (((*previous_y)==47)&&(((*current_y)==48))){printf("Y is moved to box 2, \n"),Sleep(1000),(*current_y)=2,(*previous_y)=1,roll=0,location_of_chess_Y[(*counter1)]=' ',(*counter1)=40;}
+        if (((*previous_y)+1==(*current_y))&&((*counter1==8)||(*counter1==6))){printf("Y is moved to box 2, \n"),Sleep(1000),(*current_y)=2,(*previous_y)=1,roll=0,location_of_chess_Y[(*counter1)]=' ';
+                    if((*counter1)==6){(*counter1)=40;
+                    }else if((*counter1)==8){(*counter1)=42;}
+        }
         if (*pause_y==0){(*pause_y)=2;}
         if ((((((*counter1)<=48)&&((*counter1)>=40))||(((*counter1)<=28)&&((*counter1)>=20))||(((*counter1)<=8)&&((*counter1)>=0)))&&(moved==0))&&(move_left==0)){(*counter1)++,moved=1;}
         if ((((((*counter1)>=31)&&((*counter1)<=39))||(((*counter1)>=11)&&((*counter1)<=19)))&&(moved==0))&&(move_left==0)){(*counter1)--,moved=1;}
@@ -262,7 +268,10 @@ void y_move (int *current_y, int *previous_y,char location_of_chess_Y[],int *cou
         if (((*previous_y)==35)&&(((*current_y)==36))){printf("Y is moved to box 11, \n"),Sleep(1000),(*current_y)=11,(*previous_y)=10,roll=0,location_of_chess_Y[(*counter1)]=' ',(*counter1)=49;}
         if (((*previous_y)==39)&&(((*current_y)==40))){printf("Y is forced to reverse 10 steps, \n"),Sleep(1000),(*current_y)-=10,(*previous_y)-=10,roll=0,location_of_chess_Y[(*counter1)]=' ',(*counter1)=28;}
         if (((*previous_y)==40)&&(((*current_y)==41))){printf("Y is moved to box 49, \n"),Sleep(1000),(*current_y)=49,(*previous_y)=48,roll=0,location_of_chess_Y[(*counter1)]=' ',(*counter1)=7;}
-        if (((*previous_y)==47)&&(((*current_y)==48))){printf("Y is moved to box 2, \n"),Sleep(1000),(*current_y)=2,(*previous_y)=1,roll=0,location_of_chess_Y[(*counter1)]=' ',(*counter1)=40;}
+        if (((*previous_y)+1==(*current_y))&&((*counter1==8)||(*counter1==6))){printf("Y is moved to box 2, \n"),Sleep(1000),(*current_y)=2,(*previous_y)=1,roll=0,location_of_chess_Y[(*counter1)]=' ';
+                    if((*counter1)==6){(*counter1)=40;
+                    }else if((*counter1)==8){(*counter1)=42;}
+        }
         if (*pause_y==0){(*pause_y)=2;}
         if ((((((*counter1)<=48)&&((*counter1)>=40))||(((*counter1)<=28)&&((*counter1)>=20))||(((*counter1)<=8)&&((*counter1)>=0)))&&(moved==0))&&(move_left==0)){(*counter1)++,moved=1;}
         if ((((((*counter1)>=31)&&((*counter1)<=39))||(((*counter1)>=11)&&((*counter1)<=19)))&&(moved==0))&&(move_left==0)){(*counter1)--,moved=1;}
@@ -300,7 +309,10 @@ void o_move (int *current_o, int *previous_o,char location_of_chess_Y[],int *cou
         if (((*previous_o)==35)&&(((*current_o)==36))){printf("O is moved to box 11, \n"),Sleep(1000),(*current_o)=11,(*previous_o)=10,roll=0,location_of_chess_O[(*counter2)]=' ',(*counter2)=49;}
         if (((*previous_o)==39)&&(((*current_o)==40))){printf("O is forced to reverse 10 steps, \n"),Sleep(1000),(*current_o)-=10,(*previous_o)-=10,roll=0,location_of_chess_O[(*counter2)]=' ',(*counter2)=28;}
         if (((*previous_o)==40)&&(((*current_o)==41))){printf("O is moved to box 49, \n"),Sleep(1000),(*current_o)=49,(*previous_o)=48,roll=0,location_of_chess_O[(*counter2)]=' ',(*counter2)=7;}
-        if (((*previous_o)==47)&&(((*current_o)==48))){printf("O is moved to box 2, \n"),Sleep(1000),(*current_o)=2,(*previous_o)=1,roll=0,location_of_chess_O[(*counter2)]=' ',(*counter2)=40;}
+        if (((*previous_o)+1==(*current_o))&&((*counter2==8)||(*counter2==6))){printf("O is moved to box 2, \n"),Sleep(1000),(*current_o)=2,(*previous_o)=1,roll=0,location_of_chess_O[(*counter2)]=' ';
+                    if((*counter2)==6){(*counter2)=40;
+                    }else if((*counter2)==8){(*counter2)=42;}
+        }
         if (*pause_o==0){(*pause_o)=2;}
         if ((((((*counter2)<=48)&&((*counter2)>=40))||(((*counter2)<=28)&&((*counter2)>=20))||(((*counter2)<=8)&&((*counter2)>=0)))&&(moved==0))&&(move_left==0)){(*counter2)++,moved=1;}
         if ((((((*counter2)>=31)&&((*counter2)<=39))||(((*counter2)>=11)&&((*counter2)<=19)))&&(moved==0))&&(move_left==0)){(*counter2)--,moved=1;}
@@ -342,7 +354,7 @@ int main()
             printf("Press enter to roll dice \n");
             scanf("%c",&again);
             x_move(&current_x,&previous_x,location_of_chess_Y,&counter,location_of_chess_X,location_of_chess_O,&win,&pause_x);
-            computermove(&current_y,&previous_y,location_of_chess_Y,&counter1,location_of_chess_X,location_of_chess_O,&win,&pause_y);
+            //computermove(&current_y,&previous_y,location_of_chess_Y,&counter1,location_of_chess_X,location_of_chess_O,&win,&pause_y);
             }if (win==1){current_x=0,previous_x=0,current_y=0,previous_y=0,current_o=0,previous_o=0,
                         location_of_chess_O[counter2]='\0',location_of_chess_Y[counter1]='\0',location_of_chess_X[counter]='\0',
                         counter1=40,counter=40,counter2=40,win=0;}
