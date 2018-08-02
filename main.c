@@ -176,7 +176,7 @@ void x_move(int *current_x, int *previous_x,char location_of_chess_Y[],int *coun
         location_of_chess_X[(*counter)]='X';
         printboard(location_of_chess_X,location_of_chess_Y,location_of_chess_O);
         Sleep(400);
-        printf("counter : %d\nprevious_x : %d \n current_x : %d\n",*counter,*previous_x,*current_x);
+        system("cls");
         location_of_chess_X[(*counter)]=' ';
         //To move the chess to new location when it stops at special tiles
         if (((*previous_x)==17)&&(((*current_x)==18))){printf("X is moved to box 40, \n"),Sleep(1000),(*current_x)=40,(*previous_x)=39,roll=0,location_of_chess_X[(*counter)]=' ',(*counter)=11;}
