@@ -357,7 +357,7 @@ int main()
             printf("Press enter to roll dice \n");
             scanf("%c",&again);
             x_move(&current_x,&previous_x,location_of_chess_Y,&counter,location_of_chess_X,location_of_chess_O,&win,&pause_x);
-            //computermove(&current_y,&previous_y,location_of_chess_Y,&counter1,location_of_chess_X,location_of_chess_O,&win,&pause_y);
+            computermove(&current_y,&previous_y,location_of_chess_Y,&counter1,location_of_chess_X,location_of_chess_O,&win,&pause_y);
             }if (win==1){current_x=0,previous_x=0,current_y=0,previous_y=0,current_o=0,previous_o=0,
                         location_of_chess_O[counter2]='\0',location_of_chess_Y[counter1]='\0',location_of_chess_X[counter]='\0',
                         counter1=40,counter=40,counter2=40,win=0;}
@@ -374,7 +374,7 @@ int main()
             printf("Press enter to roll dice \n");
             scanf("%c",&again);
             x_move(&current_x,&previous_x,location_of_chess_Y,&counter,location_of_chess_X,location_of_chess_O,&win,&pause_x);
-            }if (win==1){current_x=0,previous_x=0,current_y=0,previous_y=0,current_o=0,previous_o=0,
+            }if (win==1){current_x=1,previous_x=1,current_y=1,previous_y=1,current_o=1,previous_o=1,
                         location_of_chess_O[counter2]='\0',location_of_chess_Y[counter1]='\0',location_of_chess_X[counter]='\0',
                         counter1=40,counter=40,counter2=40,win=0;}
             }else {printf("Error input");}
@@ -397,7 +397,7 @@ int main()
             printf("Y's turn - Press enter to roll dice \n");
             scanf("%c",&again);
             y_move(&current_y,&previous_y,location_of_chess_Y,&counter1,location_of_chess_X,location_of_chess_O,&win,&pause_y);
-            }if (win==1){current_x=0,previous_x=0,current_y=0,previous_y=0,current_o=0,previous_o=0,
+            }if (win==1){current_x=1,previous_x=1,current_y=1,previous_y=1,current_o=1,previous_o=1,
                         location_of_chess_O[counter2]='\0',location_of_chess_Y[counter1]='\0',location_of_chess_X[counter]='\0',
                         counter1=40,counter=40,counter2=40,win=0;}
         }else if (no_player==3){
@@ -416,7 +416,7 @@ int main()
             printf("O's turn - Press enter to roll dice \n");
             scanf("%c",&again);
             o_move(&current_o,&previous_o,location_of_chess_Y,&counter2,location_of_chess_X,location_of_chess_O,&win,&pause_o);
-            }if (win==1){current_x=0,previous_x=0,current_y=0,previous_y=0,current_o=0,previous_o=0,
+            }if (win==1){current_x=1,previous_x=1,current_y=1,previous_y=1,current_o=1,previous_o=1,
                         location_of_chess_O[counter2]='\0',location_of_chess_Y[counter1]='\0',location_of_chess_X[counter]='\0',
                         counter1=40,counter=40,counter2=40,win=0;}
         }else {printf("Input error");}
