@@ -191,7 +191,7 @@ void x_move(int *current_x, int *previous_x,char location_of_chess_Y[],int *coun
         if ((((((*counter)>=31)&&((*counter)<=39))||(((*counter)>=11)&&((*counter)<=19)))&&(moved==0))&&(move_left==0)){(*counter)--,moved=1;}
         if ((((*counter)==49||(*counter)==39||(*counter)==29||(*counter)==19||(*counter)==30||(*counter)==20||(*counter)==10)&&(moved==0))&&(move_left==0)){(*counter)=(*counter)-10,moved=1;}
         if ((*counter==9)&&((*previous_x)!=((*current_x)-1))){move_left=((*current_x)-(*previous_x));}
-        if ((move_left!=0)&&(moved==0)){(*counter)--,moved=1,move_left--;}
+        if ((move_left!=0)&&(moved==0)){(*counter)--,moved=1,move_left--,(*current_x)--,(*previous_x)--;}
         if (move_left==0&&(*counter)==9){system("cls"),printf("X win\n"),Sleep(1500),(*win)=1;}
 
         if (((*previous_x)+1==(*current_x))&&(*counter==7)){printf("X is moved to box 2, \n"),Sleep(1000),(*current_x)=2,(*previous_x)=1,roll=0,location_of_chess_X[(*counter)]=' ',(*counter)=41;}
@@ -232,7 +232,7 @@ void computermove (int *current_y, int *previous_y,char location_of_chess_Y[],in
         if ((((((*counter1)>=31)&&((*counter1)<=39))||(((*counter1)>=11)&&((*counter1)<=19)))&&(moved==0))&&(move_left==0)){(*counter1)--,moved=1;}
         if ((((*counter1)==49||(*counter1)==39||(*counter1)==29||(*counter1)==19||(*counter1)==30||(*counter1)==20||(*counter1)==10)&&(moved==0))&&(move_left==0)){(*counter1)=(*counter1)-10,moved=1;}
         if ((*counter1==9)&&((*previous_y)!=((*current_y)-1))){move_left=((*current_y)-(*previous_y));}
-        if ((move_left!=0)&&(moved==0)){(*counter1)--,moved=1,move_left--;}
+        if ((move_left!=0)&&(moved==0)){(*counter1)--,moved=1,move_left--,(*current_y)--,(*previous_y)--;}
         if (move_left==0&&(*counter1)==9){system("cls"),printf("Computer win\n"),Sleep(1500),(*win)=1;}
 
         if (((*previous_y)+1==(*current_y))&&(*counter1==7)){printf("Y is moved to box 2, \n"),Sleep(1000),(*current_y)=2,(*previous_y)=1,roll=0,location_of_chess_Y[(*counter1)]=' ',(*counter1)=41;}
@@ -247,7 +247,7 @@ void y_move (int *current_y, int *previous_y,char location_of_chess_Y[],int *cou
     time_t t;
     srand((unsigned)time(&t));
     roll=rand()%6;
-    roll++;
+    roll=48;
     if (((*previous_y)==2)&&(((*current_y)==2))&&(*pause_y>=1)){printf("Y is trapped, "),roll=0,(*pause_y)-=2;}
     if (((*previous_y)==31)&&(((*current_y)==31))&&(*pause_y>=1)){printf("Y is trapped, "),roll=0,(*pause_y)--;}
     printf("Y get %d point",roll);
@@ -272,7 +272,7 @@ void y_move (int *current_y, int *previous_y,char location_of_chess_Y[],int *cou
         if ((((((*counter1)>=31)&&((*counter1)<=39))||(((*counter1)>=11)&&((*counter1)<=19)))&&(moved==0))&&(move_left==0)){(*counter1)--,moved=1;}
         if ((((*counter1)==49||(*counter1)==39||(*counter1)==29||(*counter1)==19||(*counter1)==30||(*counter1)==20||(*counter1)==10)&&(moved==0))&&(move_left==0)){(*counter1)=(*counter1)-10,moved=1;}
         if ((*counter1==9)&&((*previous_y)!=((*current_y)-1))){move_left=((*current_y)-(*previous_y));}
-        if ((move_left!=0)&&(moved==0)){(*counter1)--,moved=1,move_left--;}
+        if ((move_left!=0)&&(moved==0)){(*counter1)--,moved=1,move_left--,(*current_y)--,(*previous_y)--;}
         if (move_left==0&&(*counter1)==9){system("cls"),printf("Y win\n"),Sleep(1500),(*win)=1;}
 
         if (((*previous_y)+1==(*current_y))&&(*counter1==7)){printf("Y is moved to box 2, \n"),Sleep(1000),(*current_y)=2,(*previous_y)=1,roll=0,location_of_chess_Y[(*counter1)]=' ',(*counter1)=41;}
@@ -312,7 +312,7 @@ void o_move (int *current_o, int *previous_o,char location_of_chess_Y[],int *cou
         if ((((((*counter2)>=31)&&((*counter2)<=39))||(((*counter2)>=11)&&((*counter2)<=19)))&&(moved==0))&&(move_left==0)){(*counter2)--,moved=1;}
         if ((((*counter2)==49||(*counter2)==39||(*counter2)==29||(*counter2)==19||(*counter2)==30||(*counter2)==20||(*counter2)==10)&&(moved==0))&&(move_left==0)){(*counter2)=(*counter2)-10,moved=1;}
         if ((*counter2==9)&&((*previous_o)!=((*current_o)-1))){move_left=((*current_o)-(*previous_o));}
-        if ((move_left!=0)&&(moved==0)){(*counter2)--,moved=1,move_left--;}
+        if ((move_left!=0)&&(moved==0)){(*counter2)--,moved=1,move_left--,(*current_o)--,(*previous_o)--;}
         if (move_left==0&&(*counter2)==9){system("cls"),printf("O win\n"),Sleep(1500),(*win)=1;}
 
         if (((*previous_o)+1==(*current_o))&&(*counter2==7)){printf("O is moved to box 2, \n"),Sleep(1000),(*current_o)=2,(*previous_o)=1,roll=0,location_of_chess_O[(*counter2)]=' ',(*counter2)=41;}
