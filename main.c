@@ -163,7 +163,7 @@ void x_move(int *current_x, int *previous_x,char location_of_chess_Y[],int *coun
     time_t t;
     srand((unsigned)time(&t));
     roll=rand()%6;
-    roll++;
+    roll=49;
     //To pause the chess when it stops at special tiles
     if (((*previous_x)==2)&&(((*current_x)==2))&&(*pause_x>=1)){printf("X is trapped, "),roll=0,(*pause_x)-=2;}
     if (((*previous_x)==31)&&(((*current_x)==31))&&(*pause_x>=1)){printf("X is trapped, "),roll=0,(*pause_x)--;}
@@ -350,11 +350,13 @@ int main()
             printf("Press enter to roll dice \n");
             scanf("%c",&again);
             x_move(&current_x,&previous_x,location_of_chess_Y,&counter,location_of_chess_X,location_of_chess_O,&win,&pause_x);
+            if (win==1){break;}
             computermove(&current_y,&previous_y,location_of_chess_Y,&counter1,location_of_chess_X,location_of_chess_O,&win,&pause_y);
+            if (win==1){break;}
+            }
             }if (win==1){current_x=0,previous_x=0,current_y=0,previous_y=0,current_o=0,previous_o=0,
                         location_of_chess_O[counter2]='\0',location_of_chess_Y[counter1]='\0',location_of_chess_X[counter]='\0',
                         counter1=40,counter=40,counter2=40,win=0;}
-            }
         else if(sequence==2){
             system("cls");
             printf("Second to start");
@@ -364,13 +366,16 @@ int main()
             printboard(location_of_chess_X,location_of_chess_Y,location_of_chess_O);
             while((again=='\n')&&(win==0)){
             computermove(&current_y,&previous_y,location_of_chess_Y,&counter1,location_of_chess_X,location_of_chess_O,&win,&pause_y);
+            if (win==1){break;}
             printf("Press enter to roll dice \n");
             scanf("%c",&again);
             x_move(&current_x,&previous_x,location_of_chess_Y,&counter,location_of_chess_X,location_of_chess_O,&win,&pause_x);
-            }if (win==1){current_x=1,previous_x=1,current_y=1,previous_y=1,current_o=1,previous_o=1,
+            if (win==1){break;}
+            }
+            }else {printf("Error input"),Sleep(1000);}
+            if (win==1){current_x=1,previous_x=1,current_y=1,previous_y=1,current_o=1,previous_o=1,
                         location_of_chess_O[counter2]='\0',location_of_chess_Y[counter1]='\0',location_of_chess_X[counter]='\0',
                         counter1=40,counter=40,counter2=40,win=0;}
-            }else {printf("Error input");}
     }else if (userchoice==2){
         system("cls");
         printboard(location_of_chess_X,location_of_chess_Y,location_of_chess_O);
@@ -387,9 +392,11 @@ int main()
             printf("X's turn - Press enter to roll dice \n");
             scanf("%c",&again);
             x_move(&current_x,&previous_x,location_of_chess_Y,&counter,location_of_chess_X,location_of_chess_O,&win,&pause_x);
+            if (win==1){break;}
             printf("Y's turn - Press enter to roll dice \n");
             scanf("%c",&again);
             y_move(&current_y,&previous_y,location_of_chess_Y,&counter1,location_of_chess_X,location_of_chess_O,&win,&pause_y);
+            if (win==1){break;}
             }if (win==1){current_x=1,previous_x=1,current_y=1,previous_y=1,current_o=1,previous_o=1,
                         location_of_chess_O[counter2]='\0',location_of_chess_Y[counter1]='\0',location_of_chess_X[counter]='\0',
                         counter1=40,counter=40,counter2=40,win=0;}
@@ -403,16 +410,19 @@ int main()
             printf("X's turn - Press enter to roll dice \n");
             scanf("%c",&again);
             x_move(&current_x,&previous_x,location_of_chess_Y,&counter,location_of_chess_X,location_of_chess_O,&win,&pause_x);
+            if (win==1){break;}
             printf("Y's turn - Press enter to roll dice \n");
             scanf("%c",&again);
             y_move(&current_y,&previous_y,location_of_chess_Y,&counter1,location_of_chess_X,location_of_chess_O,&win,&pause_y);
+            if (win==1){break;}
             printf("O's turn - Press enter to roll dice \n");
             scanf("%c",&again);
             o_move(&current_o,&previous_o,location_of_chess_Y,&counter2,location_of_chess_X,location_of_chess_O,&win,&pause_o);
+            if (win==1){break;}
             }if (win==1){current_x=1,previous_x=1,current_y=1,previous_y=1,current_o=1,previous_o=1,
                         location_of_chess_O[counter2]='\0',location_of_chess_Y[counter1]='\0',location_of_chess_X[counter]='\0',
                         counter1=40,counter=40,counter2=40,win=0;}
-        }else {printf("Input error");}
+        }else {printf("Input error"),Sleep(1000);}
     }system("cls");
     }end();
     return 0;
