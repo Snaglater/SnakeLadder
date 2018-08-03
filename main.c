@@ -163,7 +163,7 @@ void x_move(int *current_x, int *previous_x,char location_of_chess_Y[],int *coun
     time_t t;
     srand((unsigned)time(&t));
     roll=rand()%6;
-    roll=49;
+    roll++;
     //To pause the chess when it stops at special tiles
     if (((*previous_x)==2)&&(((*current_x)==2))&&(*pause_x>=1)){printf("X is trapped, "),roll=0,(*pause_x)-=2;}
     if (((*previous_x)==31)&&(((*current_x)==31))&&(*pause_x>=1)){printf("X is trapped, "),roll=0,(*pause_x)--;}
