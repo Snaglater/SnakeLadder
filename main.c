@@ -247,7 +247,7 @@ void y_move (int *current_y, int *previous_y,char location_of_chess_Y[],int *cou
     time_t t;
     srand((unsigned)time(&t));
     roll=rand()%6;
-    roll=48;
+    roll++;
     if (((*previous_y)==2)&&(((*current_y)==2))&&(*pause_y>=1)){printf("Y is trapped, "),roll=0,(*pause_y)-=2;}
     if (((*previous_y)==31)&&(((*current_y)==31))&&(*pause_y>=1)){printf("Y is trapped, "),roll=0,(*pause_y)--;}
     printf("Y get %d point",roll);
